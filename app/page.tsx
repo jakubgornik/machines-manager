@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
 
-const Home = () => {
+const SignIn = () => {
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -32,21 +32,22 @@ const Home = () => {
         <div className="w-full flex max-w-[300px] sm:max-w-[800px] shadow-lg">
           <div className="hidden sm:flex w-[40%] relative rounded-l-lg overflow-hidden">
             <Image
-              layout="fill"
-              objectFit="cover"
-              src="/img/test1.jpg"
+              priority
+              fill
+              style={{ objectFit: "cover" }}
+              src="/img/signIn.jpg"
               alt="person signing image"
             />
           </div>
           <div className="w-full sm:w-[60%] flex flex-col items-center bg-gray-800 gap-2 rounded-lg sm:rounded-r-lg">
             <h2 className="text-center pt-8 sm:pt-12 pb-2 sm:pb-4 px-3 tracking-wide text-white sm:text-2xl">
               The Next{" "}
-              <span className="bg-gradient-to-l from-[#73abd1] to-[#1f93e0] bg-clip-text font-extrabold text-transparent">
+              <span className="bg-gradient-to-l from-lighterBlue to-lightBlue bg-clip-text font-extrabold text-transparent">
                 Generation
               </span>{" "}
               Manager
             </h2>
-            <p className="text-gray-500 text-center px-3 pb-2 sm:text-base text-sm">
+            <p className="text-slateGray text-center px-3 pb-2 sm:text-base text-sm">
               Give our dedicated manager a try and discover its possibilities!
             </p>
             <form
@@ -67,7 +68,7 @@ const Home = () => {
                     formik.touched.email && formik.errors.email
                       ? "border-red-600 focus:border-red-600"
                       : ""
-                  } focus:shadow-outline w-full appearance-none border-b-2 border-slate-900 bg-slate-600 py-3 px-2 leading-normal text-white focus:border-mint  focus:outline-none`}
+                  } focus:shadow-outline w-full appearance-none border-b-2 border-lightBlue bg-slateGray py-3 px-2 leading-normal text-white focus:border-mint  focus:outline-none`}
                 />
                 <label
                   htmlFor="email"
@@ -98,7 +99,7 @@ const Home = () => {
                     formik.touched.password && formik.errors.password
                       ? "border-red-600 focus:border-red-600"
                       : ""
-                  } focus:shadow-outline w-full appearance-none border-b-2 border-slate-900 bg-slate-600 py-3 px-2 leading-normal text-white focus:border-mint  focus:outline-none`}
+                  } focus:shadow-outline w-full appearance-none border-b-2 border-lightBlue bg-slateGray py-3 px-2 leading-normal text-white focus:border-mint  focus:outline-none`}
                 />
                 <label
                   htmlFor="password"
@@ -117,26 +118,31 @@ const Home = () => {
                 )}
               </div>
               <button
-                disabled={!!formik.errors.email || !!formik.errors.password}
+                disabled={
+                  !!formik.errors.email ||
+                  !!formik.errors.password ||
+                  formik.values.email.length === 0 ||
+                  formik.values.password.length === 0
+                }
                 type="submit"
-                className="sm:text-base text-xs w-3/4 h-12 rounded-lg border border-[#1f93e0] font-medium text-white transition-all duration-300 hover:bg-[#1f93e0] hover:bg-opacity-60 disabled:border-red-600 disabled:bg-transparent disabled:text-red-600 "
+                className="sm:text-base text-xs w-3/4 h-12 rounded-sm border border-lightBlue font-medium text-white transition-all duration-300 hover:bg-lightBlue hover:bg-opacity-60 disabled:border-slateGray disabled:bg-transparent disabled:text-slateGray "
               >
                 Login
               </button>
             </form>
 
-            <span className="text-gray-500 text-xs sm:text-base">or</span>
+            <span className="text-slateGray text-xs sm:text-base">or</span>
 
             <button
               type="button"
-              className="flex justify-center gap-2  items-center sm:text-base text-xs w-3/4 h-12 rounded-lg border border-[#1f93e0] font-medium text-white transition-all duration-300 hover:bg-[#1f93e0] hover:bg-opacity-60 disabled:border-red-600 disabled:bg-transparent disabled:text-red-600 "
+              className="flex justify-center gap-2  items-center sm:text-base text-xs w-3/4 h-12 rounded-sm border border-lightBlue font-medium text-white transition-all duration-300 hover:bg-lightBlue hover:bg-opacity-60"
             >
               Sign in with Google
               <FaGoogle />
             </button>
-            <span className=" mb-10 text-gray-500">
+            <span className="mb-10 text-slateGray text-xs sm:text-base">
               don't have an account yet?{" "}
-              <Link href="test" className="text-[#1f93e0]">
+              <Link href="test" className="text-lightBlue">
                 Sign up
               </Link>
             </span>
@@ -147,4 +153,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default SignIn;
