@@ -117,6 +117,7 @@ const Home = () => {
                 )}
               </div>
               <button
+                disabled={!!formik.errors.email || !!formik.errors.password}
                 type="submit"
                 className="sm:text-base text-xs w-3/4 h-12 rounded-lg border border-[#1f93e0] font-medium text-white transition-all duration-300 hover:bg-[#1f93e0] hover:bg-opacity-60 disabled:border-red-600 disabled:bg-transparent disabled:text-red-600 "
               >
@@ -133,7 +134,7 @@ const Home = () => {
               Sign in with Google
               <FaGoogle />
             </button>
-            <span className=" mb-14 text-gray-500">
+            <span className=" mb-10 text-gray-500">
               don't have an account yet?{" "}
               <Link href="test" className="text-[#1f93e0]">
                 Sign up
