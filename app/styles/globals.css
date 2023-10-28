@@ -14,3 +14,8 @@ body {
   background: var(--gradient);
   min-height: 100vh;
 }
+
+.float-label-input:focus-within label,
+.float-label-input input:not(:placeholder-shown) + label {
+  transform: translateY(-2.2rem) translateX(-1rem);
+}
