@@ -1,9 +1,16 @@
 import { Metadata } from "next";
+import Container from "./components/Container";
 
 export const metadata: Metadata = {
   title: "Main page",
 };
 
-export default function Home() {
-  return <main></main>;
-}
+const Home = () => {
+  return (
+    <Container>
+      <main className="flex justify-center items-center"></main>
+    </Container>
+  );
+};
+
+export default Home;
