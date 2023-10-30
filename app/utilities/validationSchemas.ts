@@ -5,6 +5,10 @@ export const validationSchema = Yup.object().shape({
     .email("Invalid email address")
     .required("Email is required"),
   password: Yup.string()
-    .matches(/^\d{3}$/, "Enter 3 digit number")
-    .required("Password number is required"),
+    .min(5, "Password must be at least 5 characters")
+    .matches(
+      /^(?=.*[A-Z])(?=.*\d)(?=.*[@!#$%^&*])[A-Za-z\d@!#$%^&*]+$/,
+      "Password must contain at least 1 uppercase letter, 1 number, and 1 special character (!@#$%^&*)"
+    )
+    .required("Password is required"),
 });
