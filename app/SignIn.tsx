@@ -1,8 +1,9 @@
 "use client";
+import { signIn } from "next-auth/react";
 
-import Container from "../components/Container";
+import Container from "./components/Container";
 import Image from "next/image";
-import { validationSchema } from "../utilities/validationSchemas";
+import { validationSchema } from "./utilities/validationSchemas";
 import { useFormik } from "formik";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
@@ -134,6 +135,7 @@ const SignIn = () => {
             <span className="text-slateGray text-xs sm:text-base">or</span>
 
             <button
+              onClick={() => signIn("google")}
               type="button"
               className="flex justify-center gap-2  items-center sm:text-base text-xs w-3/4 h-12 rounded-sm border border-lightBlue font-medium text-white transition-all duration-300 hover:bg-lightBlue hover:bg-opacity-60"
             >
