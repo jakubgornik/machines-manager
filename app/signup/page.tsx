@@ -38,13 +38,13 @@ const SignUp = () => {
   return (
     <>
       <Container>
-        <main className="flex justify-center items-center h-screen ">
-          <div className="w-full flex flex-col items-center max-w-[300px] sm:max-w-[800px] shadow-lg bg-gray-800 py-16 rounded-md">
+        <main className="flex h-screen items-center justify-center ">
+          <div className="flex w-full max-w-[300px] flex-col items-center rounded-md bg-gray-800 py-16 shadow-lg sm:max-w-[800px]">
             <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-white">
               Sign up
             </h2>
 
-            <div className="my-9 sm:my-6 float-label-input relative w-3/4">
+            <div className="float-label-input relative my-9 w-3/4 sm:my-6">
               <input
                 name="email"
                 type="email"
@@ -57,7 +57,7 @@ const SignUp = () => {
                   formik.touched.email && formik.errors.email
                     ? "border-red-600 focus:border-red-600"
                     : ""
-                } focus:shadow-outline w-full appearance-none border-b-2 border-lightBlue bg-slateGray py-3 px-2 leading-normal text-white focus:border-mint  focus:outline-none`}
+                } focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-white  focus:outline-none`}
               />
               <label
                 htmlFor="email"
@@ -65,18 +65,18 @@ const SignUp = () => {
                   formik.touched.email && formik.errors.email
                     ? "text-red-600"
                     : "text-white"
-                } pointer-events-none absolute top-4 -left-0 sm:top-3 sm:left-0 px-4 transition duration-200 ease-in-out text-xs sm:text-base`}
+                } pointer-events-none absolute -left-0 top-4 px-4 text-xs transition duration-200 ease-in-out sm:left-0 sm:top-3 sm:text-base`}
               >
                 Email
               </label>
               {formik.touched.email && formik.errors.email && (
-                <p className="absolute top-12 text-red-600 text-xs">
+                <p className="absolute top-12 text-xs text-red-600">
                   {formik.errors.email}
                 </p>
               )}
             </div>
 
-            <div className="my-9 sm:my-6 float-label-input relative w-3/4">
+            <div className="float-label-input relative my-9 w-3/4 sm:my-6">
               <input
                 name="password"
                 type="password"
@@ -89,7 +89,7 @@ const SignUp = () => {
                   formik.touched.password && formik.errors.password
                     ? "border-red-600 focus:border-red-600"
                     : ""
-                } focus:shadow-outline w-full appearance-none border-b-2 border-lightBlue bg-slateGray py-3 px-2 leading-normal text-white focus:border-mint  focus:outline-none`}
+                } focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-white  focus:outline-none`}
               />
               <label
                 htmlFor="password"
@@ -97,18 +97,18 @@ const SignUp = () => {
                   formik.touched.password && formik.errors.password
                     ? "text-red-600"
                     : "text-white"
-                } pointer-events-none absolute top-4 -left-0 sm:top-3 sm:left-0 px-4 transition duration-200 ease-in-out text-xs sm:text-base`}
+                } pointer-events-none absolute -left-0 top-4 px-4 text-xs transition duration-200 ease-in-out sm:left-0 sm:top-3 sm:text-base`}
               >
                 Password
               </label>
               {formik.touched.password && formik.errors.password && (
-                <p className="absolute top-12 text-red-600 text-xs">
+                <p className="absolute top-12 text-xs text-red-600">
                   {formik.errors.password}
                 </p>
               )}
             </div>
 
-            <div className="my-9 sm:my-6 float-label-input relative w-3/4">
+            <div className="float-label-input relative my-9 w-3/4 sm:my-6">
               <input
                 name="passwordAgain"
                 type="passwordAgain"
@@ -122,7 +122,7 @@ const SignUp = () => {
                   passwordAgain.length !== 0
                     ? "border-red-600 focus:border-red-600"
                     : ""
-                } focus:shadow-outline w-full appearance-none border-b-2 border-lightBlue bg-slateGray py-3 px-2 leading-normal text-white focus:border-mint  focus:outline-none`}
+                } focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-white  focus:outline-none`}
               />
               <label
                 htmlFor="passwordAgain"
@@ -131,13 +131,13 @@ const SignUp = () => {
                   passwordAgain.length !== 0
                     ? "text-red-600"
                     : "text-white"
-                } pointer-events-none absolute top-4 -left-0 sm:top-3 sm:left-0 px-4 transition duration-200 ease-in-out text-xs sm:text-base`}
+                } pointer-events-none absolute -left-0 top-4 px-4 text-xs transition duration-200 ease-in-out sm:left-0 sm:top-3 sm:text-base`}
               >
                 Repeat password
               </label>
               {passwordAgain !== formik.values.password &&
                 passwordAgain.length !== 0 && (
-                  <p className="absolute top-12 text-red-600 text-xs">
+                  <p className="absolute top-12 text-xs text-red-600">
                     Wrong password
                   </p>
                 )}
@@ -155,7 +155,7 @@ const SignUp = () => {
                 router.push("/signin");
               }}
               type="button"
-              className="disabled:opacity-40 disabled:hover:bg-transparent disabled:border-slateGray disabled:bg-transparent disabled:text-slateGray  flex justify-center gap-2 items-center sm:text-base text-xs w-3/4 h-12 rounded-sm border border-lightBlue font-medium text-white transition-all duration-300 hover:bg-lightBlue hover:bg-opacity-60"
+              className="flex h-12 w-3/4 items-center justify-center  gap-2 rounded-sm border border-lightBlue text-xs font-medium text-white transition-all duration-300 hover:bg-lightBlue hover:bg-opacity-60 disabled:border-slateGray disabled:bg-transparent disabled:text-slateGray disabled:opacity-40 disabled:hover:bg-transparent sm:text-base"
             >
               Sign Up
             </button>
