@@ -1,14 +1,17 @@
 "use client";
-import { signIn } from "next-auth/react";
-
-import Container from "./components/Container";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import Container from "../components/Container";
 import Image from "next/image";
-import { validationSchema } from "./utilities/validationSchemas";
+import { validationSchema } from "../utilities/validationSchemas";
 import { useFormik } from "formik";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
 
 const SignIn = () => {
+  const router = useRouter();
+  const { data: session } = useSession();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -26,6 +29,14 @@ const SignIn = () => {
     // false to prevent Formik from running the validation logic for other fields when marking the current field as touched
     formik.setFieldTouched(name, true, false);
   };
+  const email = formik.values.email;
+  const password = formik.values.password;
+  console.log(email, password);
+
+  // workaround to avoid rendering error
+  if (session) {
+    setTimeout(() => router.push("/"), 50);
+  }
 
   return (
     <Container>
@@ -119,6 +130,14 @@ const SignIn = () => {
                 )}
               </div>
               <button
+                onClick={() =>
+                  signIn("credentials", {
+                    email,
+                    password,
+                    redirect: true,
+                    callbackUrl: "/",
+                  })
+                }
                 disabled={
                   !!formik.errors.email ||
                   !!formik.errors.password ||
@@ -135,7 +154,9 @@ const SignIn = () => {
             <span className="text-slateGray text-xs sm:text-base">or</span>
 
             <button
-              onClick={() => signIn("google")}
+              onClick={() => {
+                signIn("google");
+              }}
               type="button"
               className="flex justify-center gap-2  items-center sm:text-base text-xs w-3/4 h-12 rounded-sm border border-lightBlue font-medium text-white transition-all duration-300 hover:bg-lightBlue hover:bg-opacity-60"
             >
@@ -145,7 +166,7 @@ const SignIn = () => {
             <span className="mb-10 text-slateGray text-xs sm:text-base">
               don't have an account yet?{" "}
               <Link href="signup" className="text-lightBlue">
-                Sign up
+                Sign Up
               </Link>
             </span>
           </div>
