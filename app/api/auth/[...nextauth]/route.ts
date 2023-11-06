@@ -1,12 +1,13 @@
-import NextAuth from "next-auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/app/firebase";
 import CredentialsProvider from "next-auth/providers/credentials";
+
+import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { FirestoreAdapter } from "@auth/firebase-adapter";
+import { cert } from "firebase-admin/app";
+
 export const authOptions = {
-  pages: {
-    signIn: "/signin",
-  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -19,7 +20,7 @@ export const authOptions = {
         return await signInWithEmailAndPassword(
           auth,
           (credentials as any).email || "",
-          (credentials as any).password || ""
+          (credentials as any).password || "",
         )
           .then((userCredential) => {
             if (userCredential.user) {
@@ -36,6 +37,14 @@ export const authOptions = {
       },
     }),
   ],
+  // next-auth credentials provider wont work with adapter and will cause authentication problems according to the doc
+  adapter: FirestoreAdapter({
+    credential: cert({
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY!.replace(/\\n/g, "\n"),
+    }),
+  }),
 };
 
 const handler = NextAuth(authOptions);
