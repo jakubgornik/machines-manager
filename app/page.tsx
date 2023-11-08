@@ -5,6 +5,8 @@ import Link from "next/link";
 import { db, auth } from "./firebase";
 import { useEffect, useState } from "react";
 import { collection, query, getDocs } from "firebase/firestore";
+import Navigation from "./components/Navigation";
+import Dashboard from "./components/Dashboard";
 
 const testData: machineData = {
   id: 1,
@@ -60,9 +62,11 @@ const Home = () => {
 
   if (session)
     return (
-      <div className="flex h-screen items-center justify-center">
-        <div className="flex h-[400px] w-[800px] flex-col items-center justify-center bg-gray-800">
-          <div className="text-white">xd</div>
+      <div className="flex h-screen w-full flex-col sm:flex-row">
+        <Navigation />
+        <Dashboard>
+          {/* component from content folder-> certain components with their functions handlig data etc*/}
+          {/* there */}
           <button
             onClick={() => {
               signOut();
@@ -71,7 +75,7 @@ const Home = () => {
           >
             Logout
           </button>
-        </div>
+        </Dashboard>
       </div>
     );
 
