@@ -25,22 +25,22 @@ const Navigation = () => {
           </div>
         </Link>
         <Link href="/setstatus">
-          <FaEdit size={30} className="fill-gray-800" />
+          <FaEdit className="h-[25px] w-[25px] fill-gray-800" />
         </Link>
         <Link href="kanbanboard">
-          <FaTable size={30} className="fill-gray-800" />
+          <FaTable className="h-[25px] w-[25px] fill-gray-800" />
         </Link>
         <Link href="statistics">
-          <FaChartPie size={30} className="fill-gray-800" />
+          <FaChartPie className="h-[25px] w-[25px] fill-gray-800" />
         </Link>
         <Link href="timetable">
-          <FaRegCalendarAlt size={30} className="fill-gray-800" />
+          <FaRegCalendarAlt className="h-[25px] w-[25px] fill-gray-800" />
         </Link>
         <Link href="map">
-          <FaMapMarkedAlt size={30} className="fill-gray-800" />
+          <FaMapMarkedAlt className="h-[25px] w-[25px] fill-gray-800" />
         </Link>
         <Link href="settings">
-          <FaEllipsisV size={30} className="fill-gray-800" />
+          <FaEllipsisV className="h-[25px] w-[25px] fill-gray-800" />
         </Link>
       </div>
       {/* mobile */}
@@ -71,44 +71,48 @@ const Navigation = () => {
         )}
 
         {isMenuOpen && (
-          <div className="fixed left-0 top-10 z-50 flex h-screen w-screen flex-col items-center justify-start gap-6  backdrop-blur-sm">
-            <Link
-              className="mt-4  font-semibold duration-300 hover:text-lightBlue"
-              href="setstatus"
-            >
-              Ustaw status
-            </Link>
-            <Link
-              href="setstatus"
-              className="font-semibold duration-300 hover:text-lightBlue"
-            >
-              Tablica statusów
-            </Link>
-            <Link
-              href="setstatus"
-              className="font-semibold duration-300 hover:text-lightBlue"
-            >
-              Statystyki
-            </Link>
-            <Link
-              href="setstatus"
-              className="font-semibold duration-300 hover:text-lightBlue"
-            >
-              Kalendarz
-            </Link>
-            <Link
-              href="setstatus"
-              className="font-semibold duration-300 hover:text-lightBlue"
-            >
-              Lokalizacje
-            </Link>
-            <Link
-              href="setstatus"
-              className="font-semibold duration-300 hover:text-lightBlue"
-            >
-              Ustawienia
-            </Link>
-          </div>
+          <ul className="fixed left-0 top-10 z-50 flex h-screen w-screen flex-col items-center justify-start   backdrop-blur-sm">
+            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
+              <Link className="font-semibold " href="/">
+                Zarzadzaj maszynami
+              </Link>
+            </li>
+
+            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
+              <Link className="font-semibold " href="/setstatus">
+                Ustaw status
+              </Link>
+            </li>
+
+            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
+              <Link className="font-semibold " href="/kanbanboard">
+                Tablica statusów
+              </Link>
+            </li>
+
+            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
+              <Link className="font-semibold " href="/statistics">
+                Statystyki
+              </Link>
+            </li>
+            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
+              <Link className="font-semibold " href="/timeline">
+                Kalendarz
+              </Link>
+            </li>
+
+            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
+              <Link className="font-semibold " href="/localizations">
+                Lokalizacje
+              </Link>
+            </li>
+
+            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
+              <Link className="font-semibold " href="/settings">
+                Ustawienia
+              </Link>
+            </li>
+          </ul>
         )}
       </div>
     </div>
