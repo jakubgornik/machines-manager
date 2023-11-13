@@ -15,8 +15,8 @@ const MachinesPanel = () => {
   const userId = useGetUserId();
   const userMachines = useGetUserMachines(userId);
 
-  console.log(userId);
-  console.log(userMachines);
+  // console.log(userId);
+  // console.log(userMachines);
 
   const handleAddNewMachine = () => {
     router.push("/machines/addmachine");
@@ -26,14 +26,14 @@ const MachinesPanel = () => {
     return (
       <>
         <div
-          className="duration-30 group flex h-[80px] w-[80px] cursor-pointer items-center justify-center border-2 border-lightBlue bg-lighterBlue p-4"
+          className="group flex min-h-[140px] w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-md border border-lighterBlue bg-gray-900 px-3 py-3 duration-500 hover:bg-opacity-70 sm:w-[240px] "
           onClick={handleAddNewMachine}
         >
-          <div className="rounded-full bg-lighterBlue p-4 duration-300 group-hover:bg-lightBlue">
-            <FaPlus className="fill-gray-800" />
-          </div>
+          <FaPlus className="fill-lighterBlue duration-300 group-hover:fill-lightBlue" />
+          <span className="pointer-events-none font-semibold text-lighterBlue">
+            Add new machine
+          </span>
         </div>
-        {/* todo style machines items */}
         {userMachines &&
           userMachines.map((el) => <MachineItem key={el.id} machine={el} />)}
       </>

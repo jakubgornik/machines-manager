@@ -16,37 +16,37 @@ const Navigation = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   return (
-    <div className="flex flex-row bg-lighterBlue px-6 shadow-xl sm:flex-col sm:px-3">
+    <div className="flex flex-row bg-gray-900 px-6 shadow-xl sm:flex-col sm:px-3">
       {/* desktop */}
       <div className="hidden items-center justify-center gap-4 py-3 sm:flex sm:flex-col lg:gap-8">
         <Link href="/">
-          <div className="my-6 text-xl font-extrabold leading-6 tracking-wider text-gray-800">
+          <div className="my-6 text-xl font-extrabold leading-6 tracking-wider text-lighterBlue">
             MM
           </div>
         </Link>
-        <Link href="/setstatus">
-          <FaEdit className="h-[25px] w-[25px] fill-gray-800" />
+        <Link href="/machinesstatus">
+          <FaEdit className="h-[25px] w-[25px] fill-lighterBlue" />
         </Link>
         <Link href="kanbanboard">
-          <FaTable className="h-[25px] w-[25px] fill-gray-800" />
+          <FaTable className="h-[25px] w-[25px] fill-lighterBlue" />
         </Link>
         <Link href="statistics">
-          <FaChartPie className="h-[25px] w-[25px] fill-gray-800" />
+          <FaChartPie className="h-[25px] w-[25px] fill-lighterBlue" />
         </Link>
         <Link href="timetable">
-          <FaRegCalendarAlt className="h-[25px] w-[25px] fill-gray-800" />
+          <FaRegCalendarAlt className="h-[25px] w-[25px] fill-lighterBlue" />
         </Link>
         <Link href="map">
-          <FaMapMarkedAlt className="h-[25px] w-[25px] fill-gray-800" />
+          <FaMapMarkedAlt className="h-[25px] w-[25px] fill-lighterBlue" />
         </Link>
         <Link href="settings">
-          <FaEllipsisV className="h-[25px] w-[25px] fill-gray-800" />
+          <FaEllipsisV className="h-[25px] w-[25px] fill-lighterBlue" />
         </Link>
       </div>
       {/* mobile */}
       <div className="flex w-full justify-between px-2 sm:hidden">
         <Link href="/">
-          <div className="py-2 text-xl font-extrabold leading-6 tracking-wider text-gray-800">
+          <div className="py-4 text-xl font-extrabold leading-6 tracking-wider text-lighterBlue">
             MM
           </div>
         </Link>
@@ -57,9 +57,9 @@ const Navigation = () => {
             onClick={toggleMenu}
             className="flex h-full w-[30px] flex-col justify-center gap-[3px]"
           >
-            <span className="h-[1px]  border border-gray-800"></span>
-            <span className="h-[1px]  border border-gray-800"></span>
-            <span className="h-[1px] w-[70%] self-end  border border-gray-800"></span>
+            <span className="h-[1px]  border border-lighterBlue"></span>
+            <span className="h-[1px]  border border-lighterBlue"></span>
+            <span className="h-[1px] w-[70%] self-end border border-lighterBlue"></span>
           </div>
         ) : (
           <div
@@ -71,43 +71,43 @@ const Navigation = () => {
         )}
 
         {isMenuOpen && (
-          <ul className="fixed left-0 top-10 z-50 flex h-screen w-screen flex-col items-center justify-start   backdrop-blur-sm">
-            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
+          <ul className="fixed left-0 top-14 z-50 flex h-screen w-screen flex-col items-center justify-start text-white backdrop-blur-sm">
+            <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
               <Link className="font-semibold " href="/">
                 Zarzadzaj maszynami
               </Link>
             </li>
 
-            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
-              <Link className="font-semibold " href="/setstatus">
+            <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
+              <Link className="font-semibold " href="/machinesstatus">
                 Ustaw status
               </Link>
             </li>
 
-            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
+            <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
               <Link className="font-semibold " href="/kanbanboard">
                 Tablica statusów
               </Link>
             </li>
 
-            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
+            <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
               <Link className="font-semibold " href="/statistics">
                 Statystyki
               </Link>
             </li>
-            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
+            <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
               <Link className="font-semibold " href="/timeline">
                 Kalendarz
               </Link>
             </li>
 
-            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
+            <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
               <Link className="font-semibold " href="/localizations">
                 Lokalizacje
               </Link>
             </li>
 
-            <li className="flex w-full justify-center py-2   duration-300 hover:bg-lightBlue">
+            <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
               <Link className="font-semibold " href="/settings">
                 Ustawienia
               </Link>

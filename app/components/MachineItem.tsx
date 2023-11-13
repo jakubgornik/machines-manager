@@ -8,13 +8,16 @@ const MachineItem = ({ machine }: { machine: machineData }) => {
     router.push(`/machines/${machine.id}`);
   };
 
-  // todo style machineitem
   return (
     <div
       onClick={handleModifyItem}
-      className="h-[80px] w-full cursor-pointer bg-slate-50 text-black sm:w-[80px]"
+      className="flex min-h-[140px] w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-md border border-lighterBlue bg-gray-900 px-3 py-3 shadow-2xl duration-500 hover:bg-opacity-70 sm:w-[240px] "
     >
-      {machine.machineName}
+      <span className="text-lg font-semibold text-lighterBlue">
+        {machine.machineName}
+      </span>
+      <span className="font-thin text-white">{machine.machineDesc}</span>
+      <span className="break-all font-thin text-white">{`id #${machine.id}`}</span>
     </div>
   );
 };
