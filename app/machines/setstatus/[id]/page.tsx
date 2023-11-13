@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import ManageMachinesStatus from "@/app/components/ManageMachinesStatus";
 import { useGetUserId } from "@/app/hooks/useGetUserId";
