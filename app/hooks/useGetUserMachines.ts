@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useGetUserMachines = (userId: string) => {
-  const [userMachines, setUserMachines] = useState<machineData[] | null>(null);
+  const [userMachines, setUserMachines] = useState<machineData[]>([]);
   // todo handle states like loading
   useEffect(() => {
     const fetchUserMachines = async () => {
@@ -10,7 +10,10 @@ const useGetUserMachines = (userId: string) => {
           `https://machinesv2-default-rtdb.europe-west1.firebasedatabase.app/${userId}/machines.json`,
         );
         const fetchedData = await response.json();
-        setUserMachines(fetchedData);
+
+        if (fetchedData) {
+          setUserMachines(fetchedData);
+        }
       } catch (error) {
         console.error(error);
       }

@@ -73,11 +73,11 @@ const ModifyMachinePanel = ({ params }: { params: { id: string } }) => {
           method: "DELETE",
         },
       );
+      router.push("/");
     } catch (error) {
       console.error(error);
       throw new Error("Failed to delete machine");
     }
-    router.push("/");
   };
 
   const { data: session } = useSession();

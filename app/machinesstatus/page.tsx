@@ -1,4 +1,3 @@
-//  tutaj nawigcja , dashboard a w srodku content machinesstatuspanel
 "use client";
 
 import React from "react";

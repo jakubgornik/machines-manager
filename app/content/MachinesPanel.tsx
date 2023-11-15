@@ -10,13 +10,15 @@ import MachineItem from "../components/MachineItem";
 
 const MachinesPanel = () => {
   const { data: session } = useSession();
+
   const router = useRouter();
 
   const userId = useGetUserId();
-  const userMachines = useGetUserMachines(userId);
+  const userMachines = useGetUserMachines(userId).filter(
+    (machine) => machine !== null,
+  );
 
-  // console.log(userId);
-  // console.log(userMachines);
+  console.log(userMachines);
 
   const handleAddNewMachine = () => {
     router.push("/machines/addmachine");
