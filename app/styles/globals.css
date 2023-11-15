@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(31 41 55);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #73abd1;
+  border-radius: 20px;
+  height: 10%;
+}
+
 :root {
   --gradient: linear-gradient(
     45deg,
