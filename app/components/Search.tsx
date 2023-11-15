@@ -22,11 +22,11 @@ export const Search = ({
   console.log(filterBy);
 
   return (
-    <div className="fixed bottom-5 left-[50%] flex translate-x-[-50%]">
+    <div className="animate-search fixed bottom-5 left-[50%] flex shrink translate-x-[-50%] px-[1rem]">
       <input
-        className=" h-[50px] w-[180px] rounded-l-lg bg-lighterBlue px-4  text-sm text-gray-800  placeholder-gray-800 focus-within:border-lighterBlue focus:outline-none sm:w-[200px] "
+        className=" h-[50px] rounded-l-lg bg-lighterBlue pl-2  text-sm text-gray-800  placeholder-gray-800 focus-within:border-lighterBlue focus:outline-none sm:w-[200px] "
         type="text"
-        placeholder={`Filter by ${filterBy}...`}
+        placeholder={`Filter by ${filterBy}`}
         value={searchTerm}
         onChange={handleInputChange}
       />
