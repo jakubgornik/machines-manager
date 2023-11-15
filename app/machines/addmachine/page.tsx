@@ -43,7 +43,7 @@ const AddNewMachinePanel = () => {
     return (
       <div className="flex h-screen  flex-col sm:flex-row">
         <Navigation />
-        <Dashboard>
+        <Dashboard title="add machine">
           <ManageMachines onAdd={addMachine} userId={userId} />
         </Dashboard>
       </div>

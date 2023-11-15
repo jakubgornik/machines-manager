@@ -85,7 +85,7 @@ const ModifyMachinePanel = ({ params }: { params: { id: string } }) => {
     return (
       <div className="flex h-screen w-full flex-col sm:flex-row">
         <Navigation />
-        <Dashboard>
+        <Dashboard title="modify machine">
           <ManageMachines
             id={params.id}
             userId={userId}

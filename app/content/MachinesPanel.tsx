@@ -7,8 +7,11 @@ import { useGetUserId } from "../hooks/useGetUserId";
 import { useGetUserMachines } from "../hooks/useGetUserMachines";
 import { useSession } from "next-auth/react";
 import MachineItem from "../components/MachineItem";
+import { Search } from "../components/Search";
+import { useState } from "react";
 
 const MachinesPanel = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   const { data: session } = useSession();
 
   const router = useRouter();
@@ -18,10 +21,14 @@ const MachinesPanel = () => {
     (machine) => machine !== null,
   );
 
-  console.log(userMachines);
+  // console.log(userMachines);
 
   const handleAddNewMachine = () => {
     router.push("/machines/addmachine");
+  };
+
+  const handleSearch = (searchTerm: string) => {
+    setSearchTerm(searchTerm);
   };
 
   if (session)
@@ -36,8 +43,26 @@ const MachinesPanel = () => {
             Add new machine
           </span>
         </div>
+
         {userMachines &&
-          userMachines.map((el) => <MachineItem key={el.id} machine={el} />)}
+          (searchTerm === ""
+            ? userMachines.map((el) => <MachineItem key={el.id} machine={el} />)
+            : userMachines
+                .filter((el) => {
+                  return (
+                    (el.machineName &&
+                      el.machineName
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase())) ||
+                    (el.machineDesc &&
+                      el.machineDesc
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase()))
+                  );
+                })
+                .map((el) => <MachineItem key={el.id} machine={el} />))}
+
+        <Search onSearchChange={handleSearch} filterBy={"name or desc"} />
       </>
     );
 };

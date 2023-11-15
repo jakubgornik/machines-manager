@@ -55,7 +55,7 @@ const SetMachineStatusPanel = ({ params }: { params: { id: string } }) => {
     return (
       <div className="flex h-screen flex-col sm:flex-row">
         <Navigation />
-        <Dashboard>
+        <Dashboard title="manage status">
           <ManageMachinesStatus
             userId={userId}
             id={params.id}

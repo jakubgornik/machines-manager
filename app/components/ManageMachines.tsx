@@ -26,7 +26,7 @@ const ManageMachines = ({
     id: "",
     machineName: "",
     machineDesc: "",
-    status: "Wolny",
+    status: "Wolne",
     startDate: new Date(0),
     endDate: new Date(0),
     owner: "",
@@ -62,8 +62,8 @@ const ManageMachines = ({
   };
 
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-2 bg-gray-800">
-      <div className="float-label-input relative my-4 w-[60%] focus-within:font-semibold focus-within:text-lightBlue">
+    <div className="flex w-full flex-col items-center justify-center gap-1 bg-gray-800 sm:gap-2">
+      <div className="float-label-input relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
         <input
           name="machineName"
           type="text"
@@ -72,16 +72,16 @@ const ManageMachines = ({
           value={inputsData.machineName}
           onChange={handleInputChange}
           required
-          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-white  focus:outline-none"
+          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-gray-800 focus:outline-none"
         />
         <label
           htmlFor="machineName"
-          className="pointer-events-none absolute -left-0 top-4 px-4 text-xs transition duration-200 ease-in-out sm:left-0 sm:top-3 sm:text-base"
+          className="pointer-events-none absolute -left-0 top-4 px-4  transition duration-200 ease-in-out sm:left-0 sm:top-3 "
         >
           Machine name
         </label>
       </div>
-      <div className="float-label-input relative my-4 w-[60%] focus-within:font-semibold focus-within:text-lightBlue">
+      <div className="float-label-input relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
         <input
           name="machineDesc"
           type="text"
@@ -90,16 +90,16 @@ const ManageMachines = ({
           value={inputsData.machineDesc}
           onChange={handleInputChange}
           required
-          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-white  focus:outline-none"
+          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-gray-800 focus:outline-none"
         />
         <label
           htmlFor="machineDesc"
-          className="pointer-events-none absolute -left-0 top-4 px-4 text-xs transition duration-200 ease-in-out sm:left-0 sm:top-3 sm:text-base"
+          className="pointer-events-none absolute -left-0 top-4 px-4 transition duration-200 ease-in-out sm:left-0 sm:top-3 "
         >
           Machine description
         </label>
       </div>
-      <div className="flex w-[60%] flex-col justify-center gap-4 sm:flex-row sm:justify-end">
+      <div className="flex w-[90%] flex-col justify-center gap-4 sm:w-[60%] sm:flex-row sm:justify-end">
         {onDelete && (
           <button
             onClick={handleDelete}

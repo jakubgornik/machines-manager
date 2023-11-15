@@ -49,8 +49,8 @@ const ManageMachinesStatus = ({
   };
 
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-2 bg-gray-800 pb-6">
-      <div className="float-label-input relative my-4 w-[60%] focus-within:font-semibold focus-within:text-lightBlue">
+    <div className="flex w-full flex-col items-center justify-center gap-1 bg-gray-800 pb-6 sm:gap-2">
+      <div className="float-label-input relative my-4 w-[90%] text-xs  focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
         <input
           name="owner"
           type="text"
@@ -59,16 +59,16 @@ const ManageMachinesStatus = ({
           value={inputsData.owner}
           onChange={handleInputChange}
           required
-          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-white  focus:outline-none"
+          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-gray-800 focus:outline-none"
         />
         <label
           htmlFor="owner"
-          className="pointer-events-none absolute -left-0 top-4 px-4 text-xs transition duration-200 ease-in-out sm:left-0 sm:top-3 sm:text-base"
+          className="pointer-events-none absolute -left-0 top-4 px-4  transition duration-200 ease-in-out sm:left-0 sm:top-3 "
         >
           Owner
         </label>
       </div>
-      <div className="float-label-input relative my-4 w-[60%] focus-within:font-semibold focus-within:text-lightBlue">
+      <div className="float-label-input relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
         <input
           name="ownerMail"
           type="text"
@@ -77,17 +77,17 @@ const ManageMachinesStatus = ({
           value={inputsData.ownerMail}
           onChange={handleInputChange}
           required
-          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-white  focus:outline-none"
+          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-gray-800 focus:outline-none"
         />
         <label
           htmlFor="ownerMail"
-          className="pointer-events-none absolute -left-0 top-4 px-4 text-xs transition duration-200 ease-in-out sm:left-0 sm:top-3 sm:text-base"
+          className="pointer-events-none absolute -left-0 top-4 px-4 transition duration-200 ease-in-out sm:left-0 sm:top-3 "
         >
           Owner mail
         </label>
       </div>
 
-      <div className="float-label-input relative my-4 w-[60%] focus-within:font-semibold focus-within:text-lightBlue">
+      <div className="float-label-input relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
         <input
           name="ownerLocalization"
           type="text"
@@ -96,21 +96,21 @@ const ManageMachinesStatus = ({
           value={inputsData.ownerLocalization}
           onChange={handleInputChange}
           required
-          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-white  focus:outline-none"
+          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-gray-800  focus:outline-none"
         />
         <label
           htmlFor="ownerLocalization"
-          className="pointer-events-none absolute -left-0 top-4 px-4 text-xs transition duration-200 ease-in-out sm:left-0 sm:top-3 sm:text-base"
+          className="pointer-events-none absolute -left-0 top-4 px-4  transition duration-200 ease-in-out sm:left-0 sm:top-3 "
         >
           Owner localization
         </label>
       </div>
-      <div className="relative my-4 w-[60%] focus-within:font-semibold focus-within:text-lightBlue">
+      <div className="relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
         <select
           name="status"
           id="status"
           onChange={handleSelectInputChange}
-          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-gray-800  focus:outline-none"
+          className=" focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-gray-800  focus:outline-none"
         >
           <option value="Wolne">Wolne</option>
           <option value="Wynajete">Wynajete</option>
@@ -118,12 +118,12 @@ const ManageMachinesStatus = ({
         </select>
         <label
           htmlFor="status"
-          className=" pointer-events-none absolute -left-4 -top-5 px-4 text-xs transition duration-200 ease-in-out sm:-left-4 sm:-top-6 sm:text-base"
+          className=" pointer-events-none absolute -left-4 -top-5 px-4  transition duration-200 ease-in-out sm:-left-4 sm:-top-6"
         >
           Status
         </label>
       </div>
-      <div className="float-label-input relative my-4 w-[60%]  focus-within:font-semibold focus-within:text-lightBlue">
+      <div className="float-label-input relative my-4 w-[90%] text-xs  focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
         <input
           name="pricePerHour"
           type="number"
@@ -136,12 +136,12 @@ const ManageMachinesStatus = ({
         />
         <label
           htmlFor="pricePerHour"
-          className="pointer-events-none absolute -left-0 top-4 px-4 text-xs transition duration-200 ease-in-out sm:left-0 sm:top-3 sm:text-base"
+          className="pointer-events-none absolute -left-0 top-4 px-4  transition duration-200 ease-in-out sm:left-0 sm:top-3 "
         >
-          Price per hour
+          Price per hour[zł]
         </label>
       </div>
-      <div className="float-label-input relative my-4 w-[60%] focus-within:font-semibold focus-within:text-lightBlue">
+      <div className="float-label-input relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
         <input
           name="startDate"
           type="date"
@@ -153,12 +153,12 @@ const ManageMachinesStatus = ({
         />
         <label
           htmlFor="startDate"
-          className="pointer-events-none absolute -left-0 top-4 px-4 text-xs transition duration-200 ease-in-out sm:left-0 sm:top-3 sm:text-base"
+          className="pointer-events-none absolute -left-0 top-4 px-4  transition duration-200 ease-in-out sm:left-0 sm:top-3 "
         >
           Start date
         </label>
       </div>
-      <div className="float-label-input relative my-4 w-[60%] focus-within:font-semibold focus-within:text-lightBlue">
+      <div className="float-label-input relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
         <input
           name="endDate"
           type="date"
@@ -170,12 +170,12 @@ const ManageMachinesStatus = ({
         />
         <label
           htmlFor="endDate"
-          className="pointer-events-none absolute -left-0 top-4 px-4 text-xs transition duration-200 ease-in-out sm:left-0 sm:top-3 sm:text-base"
+          className="pointer-events-none absolute -left-0 top-4 px-4  transition duration-200 ease-in-out sm:left-0 sm:top-3 "
         >
           End date
         </label>
       </div>
-      <div className="flex w-[60%] flex-col justify-center gap-4 sm:flex-row sm:justify-end">
+      <div className="flex w-[90%] flex-col justify-center gap-4 sm:w-[60%] sm:flex-row sm:justify-end">
         <button
           onClick={() => router.push("/")}
           type="button"

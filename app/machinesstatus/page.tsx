@@ -13,7 +13,7 @@ const MachinesSetStatus = () => {
     return (
       <div className="flex h-screen w-full flex-col sm:flex-row">
         <Navigation />
-        <Dashboard>
+        <Dashboard title="manage machines status">
           <MachinesStatusPanel />
         </Dashboard>
       </div>
