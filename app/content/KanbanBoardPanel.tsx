@@ -29,7 +29,7 @@ const KanbanBoardPanel = () => {
   if (session)
     return (
       <>
-        <div className="flex w-full gap-4 pb-16">
+        <div className=" hidden w-full gap-4 pb-16 sm:flex">
           <KanbanTable data={userMachinesWithAvailableStatus} status="Wolne" />
           <KanbanTable
             data={userMachinesWithServicedStatus}

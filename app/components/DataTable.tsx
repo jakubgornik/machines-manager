@@ -9,8 +9,8 @@ const DataTable = ({
   header: string;
 }) => {
   return (
-    <div className="mb-8 w-full">
-      <span className="text-2xl font-semibold text-lighterBlue">
+    <div className="sm:text mb-4 w-full text-[0.5rem] sm:text-[0.8rem] md:text-base">
+      <span className="sm:texl-xl text-lg font-semibold text-lighterBlue md:text-2xl">
         / {header}
       </span>
       <div className="bg-gray-900 duration-300  hover:bg-opacity-70">
