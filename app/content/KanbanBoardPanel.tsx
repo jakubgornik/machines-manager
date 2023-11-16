@@ -5,8 +5,8 @@ import { useGetUserMachines } from "../hooks/useGetUserMachines";
 import KanbanTable from "../components/KanbanTable";
 import KanbanTableMobile from "../components/KanbanTableMobile";
 import DataTable from "../components/DataTable";
-import SwiperButtonNext from "../components/SwiperButtonNext";
-import SwiperButtonPrev from "../components/SwiperButtonPrev";
+import SwiperButtonNext from "../components/svg/SwiperButtonNext";
+import SwiperButtonPrev from "../components/svg/SwiperButtonPrev";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -19,7 +19,6 @@ const KanbanBoardPanel = () => {
   const userMachines = useGetUserMachines(userId).filter(
     (machine) => machine !== null,
   );
-  console.log(userMachines);
 
   const userMachinesWithAvailableStatus = userMachines.filter(
     (machine) => machine.status === "Wolne",

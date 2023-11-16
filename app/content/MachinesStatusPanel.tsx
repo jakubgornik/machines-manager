@@ -17,8 +17,6 @@ const MachinesStatusPanel = () => {
     (machine) => machine !== null,
   );
 
-  // console.log(userMachines);
-
   const handleSearch = (searchTerm: string) => {
     setSearchTerm(searchTerm);
   };

@@ -19,8 +19,6 @@ export const Search = ({
     onSearchChange(searchTerm);
   };
 
-  console.log(filterBy);
-
   return (
     <div className="animate-search fixed bottom-5 left-[50%] flex shrink translate-x-[-50%] px-[1rem]">
       <input
