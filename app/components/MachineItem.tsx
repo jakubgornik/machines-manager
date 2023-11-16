@@ -17,7 +17,7 @@ const MachineItem = ({ machine }: { machine: machineData }) => {
         {machine.machineName}
       </span>
       <span className="font-thin text-white">{machine.machineDesc}</span>
-      <span className="break-all font-thin text-white">{`id #${machine.id}`}</span>
+      <span className="break-all font-thin text-white">{`#${machine.id}`}</span>
     </div>
   );
 };

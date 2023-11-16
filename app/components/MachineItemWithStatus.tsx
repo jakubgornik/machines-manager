@@ -11,11 +11,11 @@ const MachineItemWithStatus = ({ machine }: { machine: machineData }) => {
         {machine.machineName}
       </span>
       <span className="font-thin text-white">{machine.machineDesc}</span>
-      <span className="break-all font-thin text-white">{`id: #${machine.id}`}</span>
-      <span className="font-semibold  text-lighterBlue">
+      <span className="break-all font-thin text-white">{`#${machine.id}`}</span>
+      <span className=" text-white">
         Status:{" "}
         <span
-          className={`${
+          className={`font-semibold ${
             machine.status === "Wolne"
               ? "text-green-600"
               : machine.status === "Serwisowane"

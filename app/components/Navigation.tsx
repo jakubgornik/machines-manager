@@ -27,19 +27,19 @@ const Navigation = () => {
         <Link href="/machinesstatus">
           <FaEdit className="h-[25px] w-[25px] fill-lighterBlue" />
         </Link>
-        <Link href="kanbanboard">
+        <Link href="/kanbanboard">
           <FaTable className="h-[25px] w-[25px] fill-lighterBlue" />
         </Link>
-        <Link href="statistics">
+        <Link href="/statistics">
           <FaChartPie className="h-[25px] w-[25px] fill-lighterBlue" />
         </Link>
-        <Link href="timetable">
+        <Link href="/timetable">
           <FaRegCalendarAlt className="h-[25px] w-[25px] fill-lighterBlue" />
         </Link>
-        <Link href="map">
+        <Link href="/map">
           <FaMapMarkedAlt className="h-[25px] w-[25px] fill-lighterBlue" />
         </Link>
-        <Link href="settings">
+        <Link href="/settings">
           <FaEllipsisV className="h-[25px] w-[25px] fill-lighterBlue" />
         </Link>
       </div>

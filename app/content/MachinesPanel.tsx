@@ -35,11 +35,11 @@ const MachinesPanel = () => {
     return (
       <>
         <div
-          className="group flex min-h-[140px] w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-md border border-lighterBlue bg-gray-900 px-3 py-3 duration-500 hover:bg-opacity-70 sm:w-[240px] "
+          className="group flex min-h-[140px] w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-md border border-gray-900 bg-lightBlue px-3 py-3 duration-300 hover:border-lighterBlue hover:bg-gray-900 sm:w-[240px] "
           onClick={handleAddNewMachine}
         >
-          <FaPlus className="fill-lighterBlue duration-300 group-hover:fill-lightBlue" />
-          <span className="pointer-events-none font-semibold text-lighterBlue">
+          <FaPlus className="fill-gray-900  duration-300 group-hover:fill-lighterBlue" />
+          <span className="pointer-events-none font-semibold text-gray-900 duration-300 group-hover:text-lighterBlue">
             Add new machine
           </span>
         </div>

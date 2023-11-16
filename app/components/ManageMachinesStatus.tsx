@@ -113,7 +113,7 @@ const ManageMachinesStatus = ({
           className=" focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-gray-800  focus:outline-none"
         >
           <option value="Wolne">Wolne</option>
-          <option value="Wynajete">Wynajete</option>
+          <option value="Wynajmowane">Wynajmowane</option>
           <option value="Serwisowane">Serwisowane</option>
         </select>
         <label
