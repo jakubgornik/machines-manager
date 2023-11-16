@@ -11,8 +11,15 @@ const useGetUserMachines = (userId: string) => {
         );
         const fetchedData = await response.json();
 
-        if (fetchedData) {
-          setUserMachines(fetchedData);
+        if (Array.isArray(fetchedData)) {
+          setUserMachines(fetchedData as machineData[]);
+        } else if (typeof fetchedData === "object" && fetchedData !== null) {
+          const dataArray = Object.keys(fetchedData).map(
+            (key) => fetchedData[key],
+          ) as machineData[];
+          setUserMachines(dataArray);
+        } else {
+          setUserMachines([]);
         }
       } catch (error) {
         console.error(error);

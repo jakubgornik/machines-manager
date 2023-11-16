@@ -7,6 +7,7 @@ import {
   FaMapMarkedAlt,
   FaEllipsisV,
   FaRegWindowClose,
+  FaMailBulk,
 } from "react-icons/fa";
 import Link from "next/link";
 
@@ -18,7 +19,7 @@ const Navigation = () => {
   return (
     <div className="flex flex-row bg-gray-900 px-6 shadow-xl sm:flex-col sm:px-3">
       {/* desktop */}
-      <div className="hidden items-center justify-center gap-4 py-3 sm:flex sm:flex-col lg:gap-8">
+      <div className="hidden items-center justify-center gap-8 py-3 sm:flex sm:flex-col lg:gap-12">
         <Link href="/">
           <div className="my-6 text-xl font-extrabold leading-6 tracking-wider text-lighterBlue">
             MM
@@ -29,6 +30,9 @@ const Navigation = () => {
         </Link>
         <Link href="/kanbanboard">
           <FaTable className="h-[25px] w-[25px] fill-lighterBlue" />
+        </Link>
+        <Link href="/mails">
+          <FaMailBulk className="h-[25px] w-[25px] fill-lighterBlue" />
         </Link>
         <Link href="/statistics">
           <FaChartPie className="h-[25px] w-[25px] fill-lighterBlue" />
@@ -77,19 +81,21 @@ const Navigation = () => {
                 Zarzadzaj maszynami
               </Link>
             </li>
-
             <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
               <Link className="font-semibold " href="/machinesstatus">
                 Ustaw status
               </Link>
             </li>
-
             <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
               <Link className="font-semibold " href="/kanbanboard">
                 Tablica statusów
               </Link>
             </li>
-
+            <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
+              <Link className="font-semibold " href="/mails">
+                Poczta
+              </Link>
+            </li>
             <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
               <Link className="font-semibold " href="/statistics">
                 Statystyki
@@ -100,13 +106,11 @@ const Navigation = () => {
                 Kalendarz
               </Link>
             </li>
-
             <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
               <Link className="font-semibold " href="/localizations">
                 Lokalizacje
               </Link>
             </li>
-
             <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
               <Link className="font-semibold " href="/settings">
                 Ustawienia

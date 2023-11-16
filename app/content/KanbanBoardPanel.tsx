@@ -5,6 +5,13 @@ import { useGetUserMachines } from "../hooks/useGetUserMachines";
 import KanbanTable from "../components/KanbanTable";
 import KanbanTableMobile from "../components/KanbanTableMobile";
 import DataTable from "../components/DataTable";
+import SwiperButtonNext from "../components/SwiperButtonNext";
+import SwiperButtonPrev from "../components/SwiperButtonPrev";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css/navigation";
+import "swiper/css";
 
 const KanbanBoardPanel = () => {
   const { data: session } = useSession();
@@ -12,6 +19,7 @@ const KanbanBoardPanel = () => {
   const userMachines = useGetUserMachines(userId).filter(
     (machine) => machine !== null,
   );
+  console.log(userMachines);
 
   const userMachinesWithAvailableStatus = userMachines.filter(
     (machine) => machine.status === "Wolne",
@@ -39,14 +47,47 @@ const KanbanBoardPanel = () => {
             status="Wynajmowane"
           />
         </div>
-        <div className="flex w-full justify-center sm:hidden">
-          {/* siwper */}
-          {/* kanbanmobiletabel to swiperslide dodac css guziki itd */}
-          <KanbanTableMobile
-            data={userMachinesWithAvailableStatus}
-            status="Wolne"
-          />
+
+        <div className="relative flex w-full sm:hidden">
+          <div className="swiper-button-prev">
+            <SwiperButtonPrev />
+          </div>
+          <div className="swiper-button-next">
+            <SwiperButtonNext />
+          </div>
+          <Swiper
+            slidesPerView={1}
+            loop={true}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            }}
+            modules={[Navigation]}
+            direction="horizontal"
+            className="flex w-[80%] justify-center"
+            spaceBetween={80}
+          >
+            <SwiperSlide key={1}>
+              <KanbanTableMobile
+                data={userMachinesWithAvailableStatus}
+                status="Wolne"
+              />
+            </SwiperSlide>
+            <SwiperSlide key={2}>
+              <KanbanTableMobile
+                data={userMachinesWithServicedStatus}
+                status="Serwisowane"
+              />
+            </SwiperSlide>
+            <SwiperSlide key={3}>
+              <KanbanTableMobile
+                data={userMachinesWithRentedStatus}
+                status="Wynajmowane"
+              />
+            </SwiperSlide>
+          </Swiper>
         </div>
+
         <DataTable
           data={userMachinesWithAvailableStatus}
           header="Maszyny Wolne"

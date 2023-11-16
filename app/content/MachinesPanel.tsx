@@ -17,11 +17,9 @@ const MachinesPanel = () => {
   const router = useRouter();
 
   const userId = useGetUserId();
-  const userMachines = useGetUserMachines(userId).filter(
-    (machine) => machine !== null,
-  );
-
-  // console.log(userMachines);
+  const userMachines = useGetUserMachines(userId).filter((machine) => {
+    return machine !== null;
+  });
 
   const handleAddNewMachine = () => {
     router.push("/machines/addmachine");

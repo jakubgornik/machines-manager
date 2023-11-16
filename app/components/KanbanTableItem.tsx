@@ -4,7 +4,7 @@ import Link from "next/link";
 const KanbanTableItem = ({ data }: { data: machineData }) => {
   return (
     <Link href={`/machines/setstatus/${data.id}`}>
-      <div className="flex cursor-pointer flex-col items-center justify-evenly gap-1 border-b-2 border-gray-800 px-2 py-1  text-[0.8rem] transition-all duration-300 hover:bg-slate-800 hover:bg-opacity-50 sm:flex sm:py-2 sm:text-center lg:flex-row lg:py-4 lg:text-base">
+      <div className=":text-base flex cursor-pointer flex-col items-center justify-evenly gap-1 border-b-2 border-gray-800 px-2  py-1 text-[0.8rem] transition-all duration-300 hover:bg-slate-800 hover:bg-opacity-50 sm:flex sm:py-2 sm:text-center lg:flex-row lg:py-4">
         <span className="break-all font-semibold text-lighterBlue xl:min-w-[33%]">
           {data.machineName}
         </span>
