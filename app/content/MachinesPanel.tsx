@@ -8,7 +8,7 @@ import { useGetUserMachines } from "../hooks/useGetUserMachines";
 import { useSession } from "next-auth/react";
 import MachineItem from "../components/MachineItem";
 import { Search } from "../components/Search";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 const MachinesPanel = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -21,13 +21,16 @@ const MachinesPanel = () => {
     return machine !== null;
   });
 
-  const handleAddNewMachine = () => {
+  const handleAddNewMachine = useCallback(() => {
     router.push("/machines/addmachine");
-  };
+  }, [router]);
 
-  const handleSearch = (searchTerm: string) => {
-    setSearchTerm(searchTerm);
-  };
+  const handleSearch = useCallback(
+    (searchTerm: string) => {
+      setSearchTerm(searchTerm);
+    },
+    [setSearchTerm],
+  );
 
   if (session)
     return (

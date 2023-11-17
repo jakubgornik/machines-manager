@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aldabil/react-scheduler": "^2.7.26",
     "@auth/firebase-adapter": "^1.0.3",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "date-fns": "^2.30.0",
     "firebase": "^10.5.2",
     "firebase-admin": "^11.11.0",
     "formik": "^2.4.5",

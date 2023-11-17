@@ -6,11 +6,13 @@ const useGetUserMachines = (userId: string) => {
   useEffect(() => {
     const fetchUserMachines = async () => {
       try {
+        if (!userId) {
+          return;
+        }
         const response = await fetch(
           `https://machinesv2-default-rtdb.europe-west1.firebasedatabase.app/${userId}/machines.json`,
         );
         const fetchedData = await response.json();
-
         if (Array.isArray(fetchedData)) {
           setUserMachines(fetchedData as machineData[]);
         } else if (typeof fetchedData === "object" && fetchedData !== null) {

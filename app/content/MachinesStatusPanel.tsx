@@ -6,7 +6,7 @@ import { useGetUserMachines } from "../hooks/useGetUserMachines";
 import { useSession } from "next-auth/react";
 import MachineItemWithStatus from "../components/MachineItemWithStatus";
 import { Search } from "../components/Search";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 const MachinesStatusPanel = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,9 +17,12 @@ const MachinesStatusPanel = () => {
     (machine) => machine !== null,
   );
 
-  const handleSearch = (searchTerm: string) => {
-    setSearchTerm(searchTerm);
-  };
+  const handleSearch = useCallback(
+    (searchTerm: string) => {
+      setSearchTerm(searchTerm);
+    },
+    [setSearchTerm],
+  );
 
   if (session)
     return (

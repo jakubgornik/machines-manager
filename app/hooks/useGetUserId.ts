@@ -13,11 +13,14 @@ const useGetUserId = () => {
         const querySnapshot = await getDocs(q);
 
         if (querySnapshot.empty) {
-          return null;
+          return;
         }
 
         const sessionData = querySnapshot.docs[0].data();
         const userId = sessionData.userId;
+        if (!userId) {
+          return;
+        }
         setUserId(userId);
       } catch (error) {
         console.error("Error getting user ID from session:", error);

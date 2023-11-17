@@ -3,8 +3,8 @@ type machineData = {
   machineName: string;
   machineDesc: string;
   status?: string;
-  startDate?: Date;
-  endDate?: Date;
+  startDate?: string;
+  endDate?: string;
   owner?: string;
   ownerMail?: string;
   pricePerHour?: number;

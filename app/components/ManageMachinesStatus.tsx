@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -18,8 +19,8 @@ const ManageMachinesStatus = ({
   const router = useRouter();
   const [inputsData, setInputsData] = useState<Partial<machineData>>({
     status: "Wolny",
-    startDate: new Date(0),
-    endDate: new Date(0),
+    startDate: "",
+    endDate: "",
     owner: "",
     ownerMail: "",
     pricePerHour: 0,
@@ -65,7 +66,7 @@ const ManageMachinesStatus = ({
           htmlFor="owner"
           className="pointer-events-none absolute -left-0 top-4 px-4  transition duration-200 ease-in-out sm:left-0 sm:top-3 "
         >
-          Owner
+          Client
         </label>
       </div>
       <div className="float-label-input relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
@@ -83,7 +84,7 @@ const ManageMachinesStatus = ({
           htmlFor="ownerMail"
           className="pointer-events-none absolute -left-0 top-4 px-4 transition duration-200 ease-in-out sm:left-0 sm:top-3 "
         >
-          Owner mail
+          Client mail
         </label>
       </div>
 
@@ -102,7 +103,7 @@ const ManageMachinesStatus = ({
           htmlFor="ownerLocalization"
           className="pointer-events-none absolute -left-0 top-4 px-4  transition duration-200 ease-in-out sm:left-0 sm:top-3 "
         >
-          Owner localization
+          Client localization
         </label>
       </div>
       <div className="relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
@@ -144,7 +145,7 @@ const ManageMachinesStatus = ({
       <div className="float-label-input relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
         <input
           name="startDate"
-          type="date"
+          type="datetime-local"
           id="startDate"
           placeholder=" "
           onChange={handleInputChange}
@@ -161,7 +162,7 @@ const ManageMachinesStatus = ({
       <div className="float-label-input relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
         <input
           name="endDate"
-          type="date"
+          type="datetime-local"
           id="endDate"
           placeholder=" "
           onChange={handleInputChange}
@@ -177,7 +178,7 @@ const ManageMachinesStatus = ({
       </div>
       <div className="flex w-[90%] flex-col justify-center gap-4 sm:w-[60%] sm:flex-row sm:justify-end">
         <button
-          onClick={() => router.push("/")}
+          onClick={() => router.back()}
           type="button"
           className="flex h-8  items-center  justify-center rounded-sm border border-lightBlue px-4 text-xs font-medium text-white transition-all duration-300 hover:bg-lightBlue hover:bg-opacity-60 sm:text-base"
         >
@@ -189,7 +190,9 @@ const ManageMachinesStatus = ({
             inputsData.ownerLocalization?.length === 0 ||
             inputsData.ownerMail?.length === 0 ||
             inputsData.status?.length === 0 ||
-            inputsData.pricePerHour === 0
+            inputsData.pricePerHour === 0 ||
+            !inputsData.startDate ||
+            !inputsData.endDate
           }
           onClick={handleUpdate}
           type="button"
