@@ -21,10 +21,10 @@ const CalcualtionSummary = ({
         </span>
         <div className="w-full border-b border-gray-800 pb-2 text-center"></div>
         <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-around sm:gap-0">
-          <span className="text-base font-semibold text-green-500 sm:text-lg">
+          <span className="text-base font-semibold text-green-400 sm:text-lg">
             {`Przychody:  ${Math.floor(income.calculated)} zł`}
           </span>
-          <span className="text-base font-semibold text-red-500 sm:text-lg">
+          <span className="text-base font-semibold text-red-400 sm:text-lg">
             {`Wydatki:  ${Math.floor(expenses.calculated)} zł`}
           </span>
         </div>
