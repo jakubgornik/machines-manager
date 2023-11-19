@@ -5,6 +5,10 @@ import { useGetUserId } from "../hooks/useGetUserId";
 import { useGetUserMachines } from "../hooks/useGetUserMachines";
 import { useGetMachinesWithTimeDifference } from "../hooks/useGetMachinesWithTimeDifference";
 
+interface ExtendedMachineData extends machineData {
+  timeDifference: number;
+}
+
 const StatisticsPanel = () => {
   const userId = useGetUserId();
   const userMachines = useGetUserMachines(userId).filter(
@@ -14,6 +18,8 @@ const StatisticsPanel = () => {
     useGetMachinesWithTimeDifference(userMachines);
 
   const currentYear = new Date().getFullYear();
+
+  // to populate select input
   const years = [];
   for (let year = currentYear; year <= currentYear + 10; year++) {
     years.push(year);
@@ -67,12 +73,108 @@ const StatisticsPanel = () => {
     return startQuarter === selectedQuarter && endQuarter === selectedQuarter;
   });
 
-  //   console.log(userMachinesWithTimeDifference);
-  //   console.log(filteredByYear);
-  //   console.log(filteredByQuarter);
+  const calculateIncomeExpenses = (data: ExtendedMachineData[]) => {
+    const calculatedIncome = data
+      .filter(
+        (item) =>
+          item.status === "Wynajmowane" && item.pricePerHour !== undefined,
+      )
+      .reduce((acc, item) => {
+        if (item.pricePerHour) {
+          return acc + item.pricePerHour * item.timeDifference;
+        }
+        return acc;
+      }, 0);
 
-  //   TODO: based on filteredByYear, filteredByQuarter calculate for both arrays expenses and income -> timeDiff * pph,
-  //    calcualte balance = income - expenses, pass expenses and income for given q/year to components as props
+    const calculatedExpenses = data
+      .filter(
+        (item) =>
+          item.status === "Serwisowane" && item.pricePerHour !== undefined,
+      )
+      .reduce((acc, item) => {
+        if (item.pricePerHour) {
+          return acc + item.pricePerHour * item.timeDifference;
+        }
+        return acc;
+      }, 0);
+
+    return [
+      { name: "income", calculated: calculatedIncome },
+      { name: "expenses", calculated: calculatedExpenses },
+    ];
+  };
+
+  // Data for basic charts, representing incomes and expenses in given year/quarter
+  const dataInGivenYear = calculateIncomeExpenses(filteredByYear);
+  const dataInGivenQuarter = calculateIncomeExpenses(filteredByQuarter);
+
+  const quarterByMonths = (filteredByQuarter: ExtendedMachineData[]) => {
+    const firstMonth: ExtendedMachineData[] = [];
+    const secondMonth: ExtendedMachineData[] = [];
+    const thirdMonth: ExtendedMachineData[] = [];
+
+    filteredByQuarter.forEach((item) => {
+      if (!item.endDate) return false;
+      const endDate = new Date(item.endDate);
+      const month = endDate.getMonth() % 3;
+
+      switch (month) {
+        case 0:
+          firstMonth.push(item);
+          break;
+        case 1:
+          secondMonth.push(item);
+          break;
+        case 2:
+          thirdMonth.push(item);
+          break;
+        default:
+          break;
+      }
+    });
+
+    return [firstMonth, secondMonth, thirdMonth];
+  };
+
+  const eachMonthOfQuarter = quarterByMonths(filteredByQuarter);
+
+  const calculateExpensesIncomeForEachMonthOfQuarter = (
+    eachMonthOfQuarter: ExtendedMachineData[][],
+  ) => {
+    const result = eachMonthOfQuarter.map((month, index) => {
+      let expenses = 0;
+      let income = 0;
+
+      month.forEach((item) => {
+        if (item.status === "Wynajmowane" && item.pricePerHour !== undefined) {
+          income += item.pricePerHour * item.timeDifference;
+        } else if (
+          item.status === "Serwisowane" &&
+          item.pricePerHour !== undefined
+        ) {
+          expenses += item.pricePerHour * item.timeDifference;
+        }
+      });
+
+      return {
+        name: `Month ${index + 1}`,
+        expenses: expenses || 0,
+        income: income || 0,
+      };
+    });
+
+    return result;
+  };
+
+  // Data for more advanced charts, representing incomes and expenses in given quarter in each month
+  console.log(eachMonthOfQuarter);
+  console.log(calculateExpensesIncomeForEachMonthOfQuarter(eachMonthOfQuarter));
+
+  // console.log(userMachinesWithTimeDifference);
+  // console.log(filteredByYear);
+  // console.log(filteredByQuarter);
+
+  //   TODO:
   //    render and display statistics via recharts
   //    (in year mode) piechart and simple bar chart to represent exp,inc in given year (pass array with 2 objects representing inc, exp)
   //    (in quarters mode) piechart and simple bar chart to represent exp,inc in given Q (pass array with 2 objects representing inc, exp)
@@ -155,14 +257,14 @@ const StatisticsPanel = () => {
       {toggleSummary ? (
         <CalcualtionSummary
           header={"Zestawienie roczne"}
-          income={3}
-          expenses={1}
+          income={dataInGivenYear[0]}
+          expenses={dataInGivenYear[1]}
         />
       ) : (
         <CalcualtionSummary
           header={"Zestawienie kwartalne"}
-          income={3}
-          expenses={1}
+          income={dataInGivenQuarter[0]}
+          expenses={dataInGivenQuarter[1]}
         />
       )}
     </div>

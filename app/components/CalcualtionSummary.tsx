@@ -4,8 +4,14 @@ const CalcualtionSummary = ({
   expenses,
 }: {
   header: string;
-  income: number;
-  expenses: number;
+  income: {
+    name: string;
+    calculated: number;
+  };
+  expenses: {
+    name: string;
+    calculated: number;
+  };
 }) => {
   return (
     <div className="flex w-full justify-center">
@@ -16,16 +22,16 @@ const CalcualtionSummary = ({
         <div className="w-full border-b border-gray-800 pb-2 text-center"></div>
         <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-around sm:gap-0">
           <span className="text-base font-semibold text-green-500 sm:text-lg">
-            {`Przychody:  ${income}`}
+            {`Przychody:  ${Math.floor(income.calculated)} zł`}
           </span>
           <span className="text-base font-semibold text-red-500 sm:text-lg">
-            {`Wydatki:  ${expenses}`}
+            {`Wydatki:  ${Math.floor(expenses.calculated)} zł`}
           </span>
         </div>
         <div className="w-full border-b border-gray-800 pb-2 text-center"></div>
-        <span className="text-base font-semibold text-white sm:text-lg">{`Bilans:  ${
-          income - expenses
-        }`}</span>
+        <span className="text-base font-semibold text-white sm:text-lg">{`Bilans:  ${Math.floor(
+          income.calculated - expenses.calculated,
+        )} zł`}</span>
       </div>
     </div>
   );
