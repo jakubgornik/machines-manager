@@ -160,7 +160,7 @@ const StatisticsPanel = () => {
         }
         return acc;
       },
-      { name: "Expenses and income", expenses: 0, income: 0 },
+      { name: "Income and expenses", expenses: 0, income: 0 },
     );
   };
 
@@ -232,12 +232,12 @@ const StatisticsPanel = () => {
   return (
     <div className="flex h-full w-full flex-col gap-6">
       <div className="flex h-full w-full justify-around gap-4">
-        <div className="relative my-4 w-1/2 text-sm print:hidden sm:text-base">
+        <div className="relative my-4 w-1/2 text-sm font-semibold text-gray-900 focus-within:text-gray-900 dark:text-lightBlue dark:focus-within:text-lightBlue print:hidden sm:text-base">
           <select
             onChange={updateInputsState}
             name="year"
             id="year"
-            className="w-full appearance-none border-b-2 border-lighterBlue bg-gray-900 px-2 py-3 leading-normal text-white focus:outline-none"
+            className="focus:shadow-outline w-full appearance-none border-b-2 border-gray-900 bg-white/70 px-2 py-3 font-normal leading-normal text-gray-900 focus:outline-none dark:border-lightBlue dark:bg-gray-900 dark:text-white"
           >
             {years.map((year) => (
               <option key={year} value={year}>
@@ -247,17 +247,17 @@ const StatisticsPanel = () => {
           </select>
           <label
             htmlFor="year"
-            className="pointer-events-none absolute -left-4 -top-5 px-4 text-white sm:-left-4 sm:-top-6"
+            className="pointer-events-none absolute -left-4 -top-5 px-4 sm:-left-4 sm:-top-6"
           >
-            Rok
+            Year
           </label>
         </div>
-        <div className="relative my-4 w-1/2 text-sm print:hidden sm:text-base">
+        <div className="relative my-4 w-1/2 text-sm font-semibold text-gray-900 focus-within:text-gray-900 dark:text-lightBlue dark:focus-within:text-lightBlue print:hidden sm:text-base">
           <select
             onChange={updateInputsState}
             name="q"
             id="q"
-            className="w-full appearance-none border-b-2 border-lighterBlue bg-gray-900 px-2 py-3 leading-normal text-white focus:outline-none"
+            className="focus:shadow-outline w-full appearance-none border-b-2 border-gray-900 bg-white/70 px-2 py-3 font-normal leading-normal text-gray-900 focus:outline-none dark:border-lightBlue dark:bg-gray-900 dark:text-white"
           >
             <option key={"q1"} value="Q1">
               Q1
@@ -274,28 +274,26 @@ const StatisticsPanel = () => {
           </select>
           <label
             htmlFor="q"
-            className="pointer-events-none absolute -left-4 -top-5 px-4 text-white sm:-left-4 sm:-top-6"
+            className="pointer-events-none absolute -left-4 -top-5 px-4  sm:-left-4 sm:-top-6"
           >
-            Kwartał
+            Quarter
           </label>
         </div>
       </div>
 
       <CalcualtionSummary
-        header={"Zestawienie roczne"}
+        header={"Annual statement"}
         income={dataInGivenYear[0]}
         expenses={dataInGivenYear[1]}
       />
 
-      <div className="flex w-full flex-col items-center justify-around gap-4 sm:flex-row">
+      <div className="flex w-full flex-col items-center justify-around gap-4 overflow-hidden sm:flex-row">
         <BarChart
           width={300}
           height={300}
           data={[combinedDataInGivenYear]}
           margin={{
             top: 5,
-            right: 30,
-            left: 20,
             bottom: 5,
           }}
         >
@@ -329,21 +327,18 @@ const StatisticsPanel = () => {
       </div>
 
       <CalcualtionSummary
-        header={`Zestawienie kwartalne ${selectInputsData.q}`}
+        header={`Quarter statement ${selectInputsData.q}`}
         income={dataInGivenQuarter[0]}
         expenses={dataInGivenQuarter[1]}
       />
 
-      <div className="flex w-full flex-col items-center justify-around gap-4 sm:flex-row">
+      <div className="flex w-full flex-col items-center justify-around gap-4 overflow-hidden sm:flex-row">
         <BarChart
           width={300}
           height={300}
-          // data={dataInGivenQuarter}
           data={[combinedDataInGivenQuarter]}
           margin={{
             top: 5,
-            right: 30,
-            left: 20,
             bottom: 5,
           }}
         >
@@ -351,7 +346,6 @@ const StatisticsPanel = () => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          {/* <Bar dataKey="calculated" fill="#73abd1" /> */}
           <Bar dataKey="income" fill="#4ade80" />
           <Bar dataKey="expenses" fill="#f87171" />
         </BarChart>
@@ -380,13 +374,9 @@ const StatisticsPanel = () => {
         <div className="h-[300px] w-[300px] sm:w-[500px] ">
           <ResponsiveContainer className="h-full w-full ">
             <BarChart
-              // width={300}
-              // height={300}
               data={eachMonthOfQuarterData}
               margin={{
                 top: 20,
-                right: 30,
-                left: 20,
                 bottom: 5,
               }}
             >
@@ -404,13 +394,13 @@ const StatisticsPanel = () => {
       <div className="flex justify-center pt-8 print:hidden">
         <div
           onClick={() => window.print()}
-          className="group flex cursor-pointer items-center gap-4 rounded-sm border border-lightBlue px-6 py-2 duration-300 hover:bg-lightBlue"
+          className="group flex cursor-pointer items-center gap-4 rounded-sm border border-gray-900 px-6 py-2 duration-300 hover:bg-gray-900/50 dark:border-lightBlue dark:hover:bg-lightBlue"
         >
-          <span className="text-lg font-semibold text-white duration-300 group-hover:text-gray-900">
+          <span className="text-lg font-medium text-gray-900 duration-300 group-hover:text-white dark:text-white">
             Print results
           </span>
           <div>
-            <FaPrint className="h-[20px] w-[20px] fill-white duration-300 group-hover:fill-gray-900" />
+            <FaPrint className="h-[20px] w-[20px] fill-gray-900 duration-300 group-hover:fill-white dark:fill-white" />
           </div>
         </div>
       </div>

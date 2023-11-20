@@ -62,8 +62,8 @@ const ManageMachines = ({
   };
 
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-1 bg-gray-800 sm:gap-2">
-      <div className="float-label-input relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
+    <div className=" flex w-full flex-col items-center justify-center gap-1 dark:bg-gray-800 sm:gap-2">
+      <div className="float-label-input relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-gray-900 dark:focus-within:text-lightBlue sm:w-[60%] sm:text-base">
         <input
           name="machineName"
           type="text"
@@ -72,7 +72,7 @@ const ManageMachines = ({
           value={inputsData.machineName}
           onChange={handleInputChange}
           required
-          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-gray-800 focus:outline-none"
+          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-gray-900 bg-white/70 px-2 py-3 leading-normal text-gray-800 focus:outline-none dark:border-lightBlue"
         />
         <label
           htmlFor="machineName"
@@ -81,7 +81,7 @@ const ManageMachines = ({
           Machine name
         </label>
       </div>
-      <div className="float-label-input relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-lightBlue sm:w-[60%] sm:text-base">
+      <div className="float-label-input relative my-4 w-[90%] text-xs focus-within:font-semibold focus-within:text-gray-900 dark:focus-within:text-lightBlue sm:w-[60%] sm:text-base">
         <input
           name="machineDesc"
           type="text"
@@ -90,7 +90,7 @@ const ManageMachines = ({
           value={inputsData.machineDesc}
           onChange={handleInputChange}
           required
-          className="focus:shadow-outline focus:border-mint w-full appearance-none border-b-2 border-lightBlue bg-slateGray px-2 py-3 leading-normal text-gray-800 focus:outline-none"
+          className="focus:shadow-outline w-full appearance-none border-b-2 border-gray-900 bg-white/70 px-2 py-3 leading-normal text-gray-800 focus:outline-none dark:border-lightBlue"
         />
         <label
           htmlFor="machineDesc"
@@ -104,7 +104,7 @@ const ManageMachines = ({
           <button
             onClick={handleDelete}
             type="button"
-            className="flex h-8 items-center  justify-center  rounded-sm border border-lightBlue px-4 text-xs font-medium text-white transition-all duration-300 hover:bg-lightBlue hover:bg-opacity-60  sm:text-base"
+            className="flex h-8 items-center justify-center rounded-sm border border-gray-900 px-4 text-xs font-medium text-white transition-all duration-300 hover:bg-gray-900 hover:bg-opacity-60 dark:border-lightBlue dark:hover:bg-lightBlue sm:text-base"
           >
             Delete
           </button>
@@ -112,7 +112,7 @@ const ManageMachines = ({
         <button
           onClick={() => router.push("/")}
           type="button"
-          className="flex h-8  items-center  justify-center rounded-sm border border-lightBlue px-4 text-xs font-medium text-white transition-all duration-300 hover:bg-lightBlue hover:bg-opacity-60 sm:text-base"
+          className="flex h-8 items-center justify-center rounded-sm border border-gray-900 px-4 text-xs font-medium text-white transition-all duration-300 hover:bg-gray-900 hover:bg-opacity-60 dark:border-lightBlue dark:hover:bg-lightBlue sm:text-base"
         >
           Cancel
         </button>
@@ -123,7 +123,7 @@ const ManageMachines = ({
           }
           onClick={onAdd ? handleAddnewMachine : handleUpdate}
           type="button"
-          className="flex h-8 items-center justify-center rounded-sm  border  border-lightBlue px-4 text-xs font-medium text-white transition-all duration-300 hover:bg-lightBlue hover:bg-opacity-60 disabled:border-slateGray disabled:bg-transparent disabled:text-slateGray sm:text-base"
+          className="flex h-8 items-center justify-center rounded-sm border border-gray-900 px-4 text-xs font-medium text-white transition-all duration-300 hover:bg-gray-900 hover:bg-opacity-60 disabled:border-gray-500 disabled:text-gray-500 disabled:hover:bg-transparent dark:border-lightBlue dark:hover:bg-lightBlue dark:disabled:hover:bg-transparent sm:text-base"
         >
           {onAdd ? "Add" : "Update"}
         </button>

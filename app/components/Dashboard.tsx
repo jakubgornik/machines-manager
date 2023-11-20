@@ -12,10 +12,10 @@ const Dashboard = ({
     <>
       <div
         id="wrapper"
-        className="h-screen max-h-full w-full overflow-y-auto bg-gray-800 px-[1rem] pt-8 print:overflow-y-visible sm:px-[3rem]"
+        className="h-screen max-h-full w-full overflow-y-auto bg-white/50 px-[1rem] pt-8 dark:bg-gray-800 print:overflow-y-visible sm:px-[3rem]"
       >
         <div className="mx-auto h-full w-full max-w-[2880px] ">
-          <span className="mb-3 flex justify-center bg-gradient-to-l from-lighterBlue to-lightBlue bg-clip-text text-center text-4xl font-extrabold uppercase text-transparent print:hidden sm:mb-12">
+          <span className="mb-3 flex justify-center bg-gradient-to-l from-gray-600 to-gray-900 bg-clip-text text-center text-4xl font-extrabold uppercase text-transparent dark:from-lighterBlue dark:to-lightBlue print:hidden sm:mb-12">
             {title}
           </span>
           <div className="fixed right-5 top-10 hidden sm:flex">
@@ -24,7 +24,7 @@ const Dashboard = ({
                 signOut();
               }}
               type="button"
-              className="flex items-center justify-center rounded-sm border border-lightBlue px-3 py-2  text-xs font-medium text-white transition-all duration-300 hover:bg-lightBlue hover:bg-opacity-60 sm:text-sm"
+              className="flex items-center justify-center rounded-sm border border-gray-900 px-3 py-2 text-xs font-medium text-gray-900 transition-all duration-300 hover:bg-gray-900 hover:bg-opacity-60   hover:text-white dark:border-lightBlue dark:text-white dark:hover:bg-lightBlue print:hidden  sm:text-sm"
             >
               Logout
             </button>

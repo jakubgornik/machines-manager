@@ -45,33 +45,39 @@ const MailsBoardPanel = () => {
     <>
       <div className="sm:text mb-4 w-full text-[0.5rem] sm:text-[0.8rem] lg:text-base">
         {uniqueEmails.length !== 0 ? (
-          <span className=" text-lg font-semibold text-lighterBlue md:text-xl">
+          <span className="text-lg font-semibold text-gray-900 dark:text-lighterBlue md:text-xl">
             / Unique customers
           </span>
         ) : null}
-        <div className="bg-gray-900 duration-300  hover:bg-opacity-70">
+        <div className="mt-4 bg-white/70 duration-300 hover:bg-white/50 dark:bg-gray-900 dark:hover:bg-opacity-70">
           {uniqueEmails.map((el) => (
             <div
               key={el.email}
-              className="flex border-b-2 border-gray-800 px-2 py-2 duration-300 hover:bg-slate-800 hover:bg-opacity-50"
+              className="flex border-b border-gray-800 px-2 py-2 duration-300 hover:bg-gray-400 hover:bg-opacity-50 dark:border-b-2  dark:hover:bg-slate-800 dark:hover:bg-opacity-50"
             >
               <div className="flex w-[25%] flex-col gap-2 pr-1">
-                <span className="font-semibold text-lighterBlue">
+                <span className="font-semibold text-gray-900 dark:text-lighterBlue">
                   Client email
                 </span>
-                <span className="break-all text-white">{el.email}</span>
+                <span className="break-all text-gray-800 dark:text-white">
+                  {el.email}
+                </span>
               </div>
 
               <div className="flex w-[25%] flex-col gap-2 pr-1">
-                <span className="font-semibold text-lighterBlue">Client</span>
-                <span className="break-all  text-white">{el.owner}</span>
+                <span className="font-semibold text-gray-900 dark:text-lighterBlue">
+                  Client
+                </span>
+                <span className="break-all text-gray-800 dark:text-white">
+                  {el.owner}
+                </span>
               </div>
 
               <div className="flex w-[25%] flex-col gap-2 pr-1">
-                <span className="font-semibold text-lighterBlue">
+                <span className="font-semibold text-gray-900 dark:text-lighterBlue">
                   Localization
                 </span>
-                <span className="break-all  text-white ">
+                <span className="break-all text-gray-800 dark:text-white">
                   {el.ownerLocalization}
                 </span>
               </div>
@@ -85,40 +91,48 @@ const MailsBoardPanel = () => {
 
       <div className="sm:text mb-8 mt-12 w-full text-[0.5rem] sm:text-[0.8rem] lg:text-base">
         {machinesWithEmail.length !== 0 ? (
-          <span className=" text-lg font-semibold text-lighterBlue md:text-xl">
+          <span className="text-lg font-semibold text-gray-900 dark:text-lighterBlue md:text-xl">
             / Customers and machines
           </span>
         ) : null}
-        <div className="bg-gray-900 duration-300  hover:bg-opacity-70">
+        <div className="mt-4 bg-white/70 duration-300 hover:bg-white/50 dark:bg-gray-900 dark:hover:bg-opacity-70">
           {machinesWithEmail.map((el) => (
             <div
               key={el.id}
-              className="flex border-b-2 border-gray-800 px-2 py-2 duration-300 hover:bg-slate-800 hover:bg-opacity-50"
+              className="flex border-b border-gray-800 px-2 py-2 duration-300 hover:bg-gray-400 hover:bg-opacity-50 dark:border-b-2  dark:hover:bg-slate-800 dark:hover:bg-opacity-50"
             >
               <div className="flex w-[20%] flex-col gap-2 pr-1">
-                <span className="font-semibold text-lighterBlue">
+                <span className="font-semibold text-gray-900 dark:text-lighterBlue">
                   Machine name
                 </span>
-                <span className="break-all text-white">{el.machineName}</span>
+                <span className="break-all text-gray-800 dark:text-white">
+                  {el.machineName}
+                </span>
               </div>
 
               <div className="flex w-[20%] flex-col gap-2 pr-1">
-                <span className="font-semibold text-lighterBlue">Client</span>
-                <span className="break-all  text-white">{el.owner}</span>
+                <span className="font-semibold text-gray-900 dark:text-lighterBlue">
+                  Client
+                </span>
+                <span className="break-all text-gray-800 dark:text-white">
+                  {el.owner}
+                </span>
               </div>
 
               <div className="flex w-[20%] flex-col gap-2 pr-1">
-                <span className="font-semibold text-lighterBlue">
+                <span className="font-semibold text-gray-900 dark:text-lighterBlue">
                   Client email
                 </span>
-                <span className="break-all text-white">{el.ownerMail}</span>
+                <span className="break-all text-gray-800 dark:text-white">
+                  {el.ownerMail}
+                </span>
               </div>
 
               <div className="flex w-[20%] flex-col gap-2 pr-1">
-                <span className="font-semibold text-lighterBlue">
+                <span className="font-semibold text-gray-900 dark:text-lighterBlue">
                   Localization
                 </span>
-                <span className="break-all  text-white ">
+                <span className="break-all text-gray-800 dark:text-white">
                   {el.ownerLocalization}
                 </span>
               </div>

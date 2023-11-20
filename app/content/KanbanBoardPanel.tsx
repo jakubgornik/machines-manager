@@ -36,15 +36,15 @@ const KanbanBoardPanel = () => {
     return (
       <>
         <div className="hidden w-full justify-between gap-3 pb-16 sm:flex">
-          <KanbanTable data={userMachinesWithAvailableStatus} status="Wolne" />
+          <KanbanTable
+            data={userMachinesWithAvailableStatus}
+            status="Available"
+          />
           <KanbanTable
             data={userMachinesWithServicedStatus}
-            status="Serwisowane"
+            status="Serviced"
           />
-          <KanbanTable
-            data={userMachinesWithRentedStatus}
-            status="Wynajmowane"
-          />
+          <KanbanTable data={userMachinesWithRentedStatus} status="Rented" />
         </div>
 
         <div className="relative flex w-full sm:hidden">
@@ -68,19 +68,19 @@ const KanbanBoardPanel = () => {
             <SwiperSlide key={1}>
               <KanbanTableMobile
                 data={userMachinesWithAvailableStatus}
-                status="Wolne"
+                status="Available"
               />
             </SwiperSlide>
             <SwiperSlide key={2}>
               <KanbanTableMobile
                 data={userMachinesWithServicedStatus}
-                status="Serwisowane"
+                status="Serviced"
               />
             </SwiperSlide>
             <SwiperSlide key={3}>
               <KanbanTableMobile
                 data={userMachinesWithRentedStatus}
-                status="Wynajmowane"
+                status="Rented"
               />
             </SwiperSlide>
           </Swiper>
@@ -88,15 +88,15 @@ const KanbanBoardPanel = () => {
 
         <DataTable
           data={userMachinesWithAvailableStatus}
-          header="Maszyny Wolne"
+          header="Available Machines"
         />
         <DataTable
           data={userMachinesWithServicedStatus}
-          header="Maszyny Serwisowane"
+          header="Serviced Machines"
         />
         <DataTable
           data={userMachinesWithRentedStatus}
-          header="Maszyny Wynajmowane"
+          header="Rented Machines"
         />
       </>
     );

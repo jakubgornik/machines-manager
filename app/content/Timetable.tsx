@@ -1,16 +1,20 @@
+"use client";
+
 import React from "react";
 import { Scheduler } from "@aldabil/react-scheduler";
-import Link from "next/link";
 import { parseISO } from "date-fns";
 import { useGetUserId } from "../hooks/useGetUserId";
 import { useGetUserMachines } from "../hooks/useGetUserMachines";
 import { ProcessedEvent } from "@aldabil/react-scheduler/types";
+import { useRouter } from "next/navigation";
 
 const Timetable = () => {
   const userId = useGetUserId();
   const userMachines = useGetUserMachines(userId).filter(
     (machine) => machine !== null,
   );
+
+  const router = useRouter();
 
   const convertData = (machinesData: machineData[]): ProcessedEvent[] => {
     return machinesData
@@ -33,7 +37,7 @@ const Timetable = () => {
           status === "Wynajmowane"
             ? "#c084fc"
             : status === "Serwisowane"
-            ? "#fde047"
+            ? "#fb923c"
             : "#73abd1";
         const title = `${machineName}, ${machineDesc}, client: ${owner}`;
         const startWithConvertedType = parseISO(startDate);
@@ -59,14 +63,13 @@ const Timetable = () => {
   return (
     <>
       <div className="flex h-[10vh] flex-col items-center justify-center">
-        <Link href={"/"}>
-          <button
-            type="button"
-            className="flex items-center justify-center gap-2 rounded-sm border border-lightBlue px-6 py-4 text-xs font-medium text-white transition-all duration-300 hover:bg-lightBlue hover:bg-opacity-60 sm:text-base"
-          >
-            Back to main page
-          </button>
-        </Link>
+        <button
+          onClick={() => router.back()}
+          type="button"
+          className="flex items-center justify-center gap-2 rounded-sm border border-gray-900 px-6 py-4 text-xs font-medium text-white transition-all duration-300 hover:bg-gray-900/50 hover:bg-opacity-60 dark:border-lightBlue dark:hover:bg-lightBlue sm:text-base"
+        >
+          Back to previous page
+        </button>
       </div>
       <Scheduler
         events={convertedData}
