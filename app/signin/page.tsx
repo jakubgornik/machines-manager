@@ -6,8 +6,6 @@ import { validationSchema } from "../utilities/validationSchemas";
 import { useFormik } from "formik";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
-import { auth } from "../firebase";
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 
 const SignIn = () => {
   const { data: session } = useSession();
@@ -22,14 +20,6 @@ const SignIn = () => {
     },
   });
 
-  // const handleSignIn = async () => {
-  //   // await signIn("google");
-  //   if (!auth.currentUser) {
-  //     const googleProvider = new GoogleAuthProvider();
-  //     await signInWithRedirect(auth, googleProvider);
-  //   }
-  // };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     formik.setFieldValue(name, value);
@@ -38,9 +28,6 @@ const SignIn = () => {
   };
   const email = formik.values.email;
   const password = formik.values.password;
-
-  console.log(auth.currentUser);
-  console.log(session);
 
   if (!session)
     return (
@@ -171,7 +158,7 @@ const SignIn = () => {
                 <FaGoogle />
               </button>
               <span className="mb-10 text-xs text-slateGray sm:text-base">
-                don't have an account yet?{" "}
+                dont have an account yet?{" "}
                 <Link href="signup" className="text-lightBlue">
                   Sign Up
                 </Link>
