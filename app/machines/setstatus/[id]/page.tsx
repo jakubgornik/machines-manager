@@ -57,19 +57,21 @@ const SetMachineStatusPanel = ({ params }: { params: { id: string } }) => {
     [router],
   );
 
-  if (session)
-    return (
-      <div className="flex h-screen flex-col sm:flex-row">
-        <Navigation />
-        <Dashboard title="manage status">
-          <ManageMachinesStatus
-            userId={userId}
-            id={params.id}
-            onUpdate={updateMachineStatus}
-          />
-        </Dashboard>
-      </div>
-    );
+  if (!session) {
+    router.replace("/");
+  }
+  return (
+    <div className="flex h-screen flex-col sm:flex-row">
+      <Navigation />
+      <Dashboard title="manage status">
+        <ManageMachinesStatus
+          userId={userId}
+          id={params.id}
+          onUpdate={updateMachineStatus}
+        />
+      </Dashboard>
+    </div>
+  );
 };
 
 export default SetMachineStatusPanel;

@@ -42,15 +42,17 @@ const AddNewMachinePanel = () => {
     [userId, router],
   );
 
-  if (session)
-    return (
-      <div className="flex h-screen  flex-col sm:flex-row">
-        <Navigation />
-        <Dashboard title="add machine">
-          <ManageMachines onAdd={addMachine} userId={userId} />
-        </Dashboard>
-      </div>
-    );
+  if (!session) {
+    router.replace("/");
+  }
+  return (
+    <div className="flex h-screen  flex-col sm:flex-row">
+      <Navigation />
+      <Dashboard title="add machine">
+        <ManageMachines onAdd={addMachine} userId={userId} />
+      </Dashboard>
+    </div>
+  );
 };
 
 export default AddNewMachinePanel;

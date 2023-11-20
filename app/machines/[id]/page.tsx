@@ -89,20 +89,22 @@ const ModifyMachinePanel = ({ params }: { params: { id: string } }) => {
     [router],
   );
 
-  if (session)
-    return (
-      <div className="flex h-screen w-full flex-col sm:flex-row">
-        <Navigation />
-        <Dashboard title="modify machine">
-          <ManageMachines
-            id={params.id}
-            userId={userId}
-            onDelete={deleteMachine}
-            onUpdate={updateMachine}
-          />
-        </Dashboard>
-      </div>
-    );
+  if (!session) {
+    router.replace("/");
+  }
+  return (
+    <div className="flex h-screen w-full flex-col sm:flex-row">
+      <Navigation />
+      <Dashboard title="modify machine">
+        <ManageMachines
+          id={params.id}
+          userId={userId}
+          onDelete={deleteMachine}
+          onUpdate={updateMachine}
+        />
+      </Dashboard>
+    </div>
+  );
 };
 
 export default ModifyMachinePanel;
