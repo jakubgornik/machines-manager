@@ -9,9 +9,12 @@ const Dashboard = ({
 }) => {
   return (
     <>
-      <div className="h-screen max-h-full w-full overflow-y-auto bg-gray-800 px-[1rem] pt-8 sm:px-[3rem]">
+      <div
+        id="wrapper"
+        className="h-screen max-h-full w-full overflow-y-auto bg-gray-800 px-[1rem] pt-8 print:overflow-y-visible sm:px-[3rem]"
+      >
         <div className="mx-auto h-full w-full max-w-[2880px] flex-wrap">
-          <span className="mb-3 flex justify-center bg-gradient-to-l from-lighterBlue to-lightBlue bg-clip-text text-center text-4xl font-extrabold uppercase text-transparent sm:mb-12">
+          <span className="mb-3 flex justify-center bg-gradient-to-l from-lighterBlue to-lightBlue bg-clip-text text-center text-4xl font-extrabold uppercase text-transparent print:hidden sm:mb-12">
             {title}
           </span>
 

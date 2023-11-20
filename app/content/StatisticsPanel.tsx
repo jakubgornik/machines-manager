@@ -17,6 +17,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
+import { FaPrint } from "react-icons/fa";
 
 const COLORS = ["#4ade80", "#f87171"];
 const RADIAN = Math.PI / 180;
@@ -229,9 +230,9 @@ const StatisticsPanel = () => {
     calculateExpensesIncomeForEachMonthOfQuarter(eachMonthOfQuarter);
 
   return (
-    <div className="flex w-full flex-col gap-6">
-      <div className="flex w-full justify-around gap-4">
-        <div className="relative my-4 w-1/2 text-sm sm:text-base">
+    <div className="flex h-full w-full flex-col gap-6">
+      <div className="flex h-full w-full justify-around gap-4">
+        <div className="relative my-4 w-1/2 text-sm print:hidden sm:text-base">
           <select
             onChange={updateInputsState}
             name="year"
@@ -251,7 +252,7 @@ const StatisticsPanel = () => {
             Rok
           </label>
         </div>
-        <div className="relative my-4 w-1/2 text-sm sm:text-base">
+        <div className="relative my-4 w-1/2 text-sm print:hidden sm:text-base">
           <select
             onChange={updateInputsState}
             name="q"
@@ -279,6 +280,7 @@ const StatisticsPanel = () => {
           </label>
         </div>
       </div>
+
       <CalcualtionSummary
         header={"Zestawienie roczne"}
         income={dataInGivenYear[0]}
@@ -327,7 +329,7 @@ const StatisticsPanel = () => {
       </div>
 
       <CalcualtionSummary
-        header={"Zestawienie kwartalne"}
+        header={`Zestawienie kwartalne ${selectInputsData.q}`}
         income={dataInGivenQuarter[0]}
         expenses={dataInGivenQuarter[1]}
       />
@@ -397,6 +399,19 @@ const StatisticsPanel = () => {
               <Bar dataKey="expenses" stackId="a" fill="#f87171" />
             </BarChart>
           </ResponsiveContainer>
+        </div>
+      </div>
+      <div className="my-8 flex justify-center print:hidden">
+        <div
+          onClick={() => window.print()}
+          className="flex cursor-pointer items-center gap-4 rounded-lg bg-gray-900 px-6 py-2"
+        >
+          <span className="text-lg font-semibold text-lighterBlue">
+            Print results
+          </span>
+          <div>
+            <FaPrint className="h-[30px] w-[30px] fill-lighterBlue" />
+          </div>
         </div>
       </div>
     </div>

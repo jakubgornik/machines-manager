@@ -17,9 +17,9 @@ const Navigation = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   return (
-    <div className="flex flex-row bg-gray-900 px-6 shadow-xl sm:flex-col sm:px-3">
+    <div className="flex flex-row bg-gray-900 px-6 shadow-xl print:hidden sm:flex-col sm:px-3">
       {/* desktop */}
-      <div className="hidden items-center justify-center gap-8 py-3 sm:flex sm:flex-col lg:gap-12">
+      <div className="hidden items-center justify-center gap-8 py-3 print:hidden sm:flex sm:flex-col lg:gap-12">
         <Link href="/">
           <div className="my-6 text-xl font-extrabold leading-6 tracking-wider text-lighterBlue">
             MM
@@ -102,7 +102,7 @@ const Navigation = () => {
               </Link>
             </li>
             <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
-              <Link className="font-semibold " href="/timeline">
+              <Link className="font-semibold " href="/timetable">
                 Kalendarz
               </Link>
             </li>

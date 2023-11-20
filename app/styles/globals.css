@@ -68,3 +68,12 @@ html {
 .swiper-button-prev::after {
   display: none;
 }
+
+@media print {
+  body,
+  html,
+  #wrapper {
+    height: 100%;
+    width: 100%;
+  }
+}
