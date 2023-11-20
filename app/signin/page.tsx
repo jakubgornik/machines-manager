@@ -1,5 +1,5 @@
 "use client";
-import { signIn, useSession, SignInResponse } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Container from "../components/Container";
 import Image from "next/image";
 import { validationSchema } from "../utilities/validationSchemas";
@@ -150,7 +150,6 @@ const SignIn = () => {
                     callbackUrl: "/",
                   });
                 }}
-                // onClick={handleSignIn}
                 type="button"
                 className="flex h-12 w-3/4  items-center justify-center gap-2 rounded-sm border border-lightBlue text-xs font-medium text-white transition-all duration-300 hover:bg-lightBlue hover:bg-opacity-60 sm:text-base"
               >

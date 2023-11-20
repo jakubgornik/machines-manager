@@ -20,7 +20,7 @@ export const Search = ({
   };
 
   return (
-    <div className="animate-search fixed bottom-5 left-[50%] flex shrink translate-x-[-50%] px-[1rem]">
+    <div className="animate-search fixed bottom-5 left-[50%] flex shrink translate-x-[-50%] px-[1rem] sm:ml-[32px]">
       <input
         className=" h-[50px] rounded-l-lg bg-lighterBlue pl-2  text-sm text-gray-800  placeholder-gray-800 focus-within:border-lighterBlue focus:outline-none sm:w-[200px] "
         type="text"

@@ -1,6 +1,12 @@
 import "../app/styles/globals.css";
 import type { Metadata } from "next";
 import SessionProvider from "./SessionProvider";
+import { Barlow } from "next/font/google";
+
+const archivo = Barlow({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+});
 
 export const metadata: Metadata = {
   title: "Machines manager",
@@ -14,7 +20,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={archivo.className}>
         <SessionProvider>{children}</SessionProvider>
       </body>
     </html>

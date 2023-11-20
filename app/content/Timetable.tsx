@@ -55,7 +55,7 @@ const Timetable = () => {
   };
 
   const convertedData: ProcessedEvent[] = convertData(userMachines);
-  console.log("rendered");
+
   return (
     <>
       <div className="flex h-[10vh] flex-col items-center justify-center">

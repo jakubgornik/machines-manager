@@ -1,5 +1,5 @@
 "use client";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Container from "./components/Container";
 import Link from "next/link";
 import Navigation from "./components/Navigation";
@@ -15,14 +15,6 @@ const Home = () => {
         <Navigation />
         <Dashboard title="manage machines">
           <MachinesPanel />
-          <button
-            onClick={() => {
-              signOut();
-            }}
-            className="text-lightBlue"
-          >
-            Logout
-          </button>
         </Dashboard>
       </div>
     );

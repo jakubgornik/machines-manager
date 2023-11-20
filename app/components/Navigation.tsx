@@ -10,6 +10,7 @@ import {
   FaMailBulk,
 } from "react-icons/fa";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,25 +27,22 @@ const Navigation = () => {
           </div>
         </Link>
         <Link href="/machinesstatus">
-          <FaEdit className="h-[25px] w-[25px] fill-lighterBlue" />
+          <FaEdit className="h-[25px] w-[25px] fill-lighterBlue duration-500 hover:fill-lightBlue" />
         </Link>
         <Link href="/kanbanboard">
-          <FaTable className="h-[25px] w-[25px] fill-lighterBlue" />
+          <FaTable className="h-[25px] w-[25px] fill-lighterBlue duration-500 hover:fill-lightBlue" />
         </Link>
         <Link href="/mails">
-          <FaMailBulk className="h-[25px] w-[25px] fill-lighterBlue" />
+          <FaMailBulk className="h-[25px] w-[25px] fill-lighterBlue duration-500 hover:fill-lightBlue" />
         </Link>
         <Link href="/statistics">
-          <FaChartPie className="h-[25px] w-[25px] fill-lighterBlue" />
+          <FaChartPie className="h-[25px] w-[25px] fill-lighterBlue duration-500 hover:fill-lightBlue" />
         </Link>
         <Link href="/timetable">
-          <FaRegCalendarAlt className="h-[25px] w-[25px] fill-lighterBlue" />
+          <FaRegCalendarAlt className="h-[25px] w-[25px] fill-lighterBlue duration-500 hover:fill-lightBlue" />
         </Link>
-        <Link href="/map">
-          <FaMapMarkedAlt className="h-[25px] w-[25px] fill-lighterBlue" />
-        </Link>
-        <Link href="/settings">
-          <FaEllipsisV className="h-[25px] w-[25px] fill-lighterBlue" />
+        <Link href="/localizations">
+          <FaMapMarkedAlt className="h-[25px] w-[25px] fill-lighterBlue duration-500 hover:fill-lightBlue" />
         </Link>
       </div>
       {/* mobile */}
@@ -75,7 +73,7 @@ const Navigation = () => {
         )}
 
         {isMenuOpen && (
-          <ul className="fixed left-0 top-14 z-50 flex h-screen w-screen flex-col items-center justify-start text-white backdrop-blur-sm">
+          <ul className="fixed left-0 top-14 z-50 flex h-screen w-screen flex-col items-center justify-start bg-gray-900/50 text-white backdrop-blur-sm">
             <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
               <Link className="font-semibold " href="/">
                 Zarzadzaj maszynami
@@ -111,10 +109,13 @@ const Navigation = () => {
                 Lokalizacje
               </Link>
             </li>
-            <li className="flex w-full justify-center py-2 duration-300 hover:bg-lightBlue hover:text-gray-800">
-              <Link className="font-semibold " href="/settings">
-                Ustawienia
-              </Link>
+            <li
+              onClick={() => {
+                signOut();
+              }}
+              className="flex w-full  justify-center py-2 font-semibold duration-300 hover:bg-lightBlue hover:text-gray-800"
+            >
+              <span className="cursor-pointer font-semibold">Logout</span>
             </li>
           </ul>
         )}

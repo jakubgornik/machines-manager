@@ -401,16 +401,16 @@ const StatisticsPanel = () => {
           </ResponsiveContainer>
         </div>
       </div>
-      <div className="my-8 flex justify-center print:hidden">
+      <div className="flex justify-center pt-8 print:hidden">
         <div
           onClick={() => window.print()}
-          className="flex cursor-pointer items-center gap-4 rounded-lg bg-gray-900 px-6 py-2"
+          className="group flex cursor-pointer items-center gap-4 rounded-sm border border-lightBlue px-6 py-2 duration-300 hover:bg-lightBlue"
         >
-          <span className="text-lg font-semibold text-lighterBlue">
+          <span className="text-lg font-semibold text-white duration-300 group-hover:text-gray-900">
             Print results
           </span>
           <div>
-            <FaPrint className="h-[30px] w-[30px] fill-lighterBlue" />
+            <FaPrint className="h-[20px] w-[20px] fill-white duration-300 group-hover:fill-gray-900" />
           </div>
         </div>
       </div>
