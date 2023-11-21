@@ -145,7 +145,7 @@ const Navigation = () => {
             </li>
             <li
               onClick={() => {
-                signOut();
+                signOut({ callbackUrl: "/" });
               }}
               className="flex w-full justify-center py-2 duration-300 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-lightBlue dark:hover:text-gray-800"
             >

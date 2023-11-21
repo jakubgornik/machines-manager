@@ -1,5 +1,5 @@
 "use client";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Container from "./components/Container";
 import Link from "next/link";
 import Navigation from "./components/Navigation";
@@ -15,6 +15,7 @@ const Home = () => {
         <Navigation />
         <Dashboard title="manage machines">
           <MachinesPanel />
+          <div className="fixed right-5 top-10 hidden sm:flex"></div>
         </Dashboard>
       </div>
     );

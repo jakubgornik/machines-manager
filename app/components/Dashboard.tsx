@@ -21,7 +21,7 @@ const Dashboard = ({
           <div className="fixed right-5 top-10 hidden sm:flex">
             <button
               onClick={() => {
-                signOut();
+                signOut({ callbackUrl: "/" });
               }}
               type="button"
               className="flex items-center justify-center rounded-sm border border-gray-900 px-3 py-2 text-xs font-medium text-gray-900 transition-all duration-300 hover:bg-gray-900 hover:bg-opacity-60   hover:text-white dark:border-lightBlue dark:text-white dark:hover:bg-lightBlue print:hidden  sm:text-sm"
