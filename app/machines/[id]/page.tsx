@@ -5,20 +5,21 @@ import ManageMachines from "@/app/components/ManageMachines";
 import Navigation from "@/app/components/Navigation";
 import Dashboard from "@/app/components/Dashboard";
 import { useSession } from "next-auth/react";
-import { useGetUserId } from "@/app/hooks/useGetUserId";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
+import { MachineData } from "@/types";
 
 const ModifyMachinePanel = ({ params }: { params: { id: string } }) => {
-  const userId = useGetUserId();
-  const router = useRouter();
   const { data: session } = useSession();
+  const router = useRouter();
+
+  const userId = session?.user?.id ? session.user.id : "";
 
   const updateMachine = useCallback(
     async (
       userId: string,
       machineToUpdateId: string,
-      newData: Partial<machineData>,
+      newData: Partial<MachineData>,
     ): Promise<void> => {
       try {
         const res = await fetch(
@@ -91,7 +92,7 @@ const ModifyMachinePanel = ({ params }: { params: { id: string } }) => {
 
   if (session)
     return (
-      <div className="flex h-screen w-full flex-col sm:flex-row">
+      <div className="flex h-[100dvh] w-full flex-col sm:flex-row">
         <Navigation />
         <Dashboard title="modify machine">
           <ManageMachines

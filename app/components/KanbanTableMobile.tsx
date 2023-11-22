@@ -1,12 +1,13 @@
 import React from "react";
 import KanbanTableItem from "./KanbanTableItem";
+import { MachineData } from "@/types";
 
 const KanbanTableMobile = ({
   data,
   status,
 }: {
   status: string;
-  data: machineData[];
+  data: MachineData[];
 }) => {
   return (
     <div className="flex h-full w-[100%] flex-col overflow-hidden rounded-t-lg bg-white/70 transition-all duration-300 hover:bg-white/50 hover:bg-opacity-20 dark:bg-gray-900 dark:hover:bg-opacity-70">

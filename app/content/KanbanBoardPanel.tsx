@@ -1,6 +1,5 @@
 import React from "react";
 import { useSession } from "next-auth/react";
-import { useGetUserId } from "../hooks/useGetUserId";
 import { useGetUserMachines } from "../hooks/useGetUserMachines";
 import KanbanTable from "../components/KanbanTable";
 import KanbanTableMobile from "../components/KanbanTableMobile";
@@ -15,7 +14,8 @@ import "swiper/css";
 
 const KanbanBoardPanel = () => {
   const { data: session } = useSession();
-  const userId = useGetUserId();
+
+  const userId = session?.user?.id;
   const userMachines = useGetUserMachines(userId).filter(
     (machine) => machine !== null,
   );

@@ -2,6 +2,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { MachineData } from "@/types";
 
 const ManageMachinesStatus = ({
   id,
@@ -13,11 +14,11 @@ const ManageMachinesStatus = ({
   onUpdate?: (
     userId: string,
     machineDataId: string,
-    newData: Partial<machineData>,
+    newData: Partial<MachineData>,
   ) => Promise<void>;
 }) => {
   const router = useRouter();
-  const [inputsData, setInputsData] = useState<Partial<machineData>>({
+  const [inputsData, setInputsData] = useState<Partial<MachineData>>({
     status: "Wolny",
     startDate: "",
     endDate: "",

@@ -9,7 +9,7 @@ const Home = () => {
 
   if (session)
     return (
-      <div className="flex h-screen w-full flex-col sm:flex-row">
+      <div className="flex h-[100dvh] w-full flex-col sm:flex-row">
         <Navigation />
         <Dashboard title="statistics">
           <StatisticsPanel />

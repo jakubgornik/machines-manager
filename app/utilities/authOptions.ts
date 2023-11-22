@@ -36,6 +36,23 @@ export const authOptions: AuthOptions = {
       },
     }),
   ],
+  callbacks: {
+    session: async ({ session, token }) => {
+      if (session?.user) {
+        session.user.id = token.uid;
+      }
+      return session;
+    },
+    jwt: async ({ user, token }) => {
+      if (user) {
+        token.uid = user.id;
+      }
+      return token;
+    },
+  },
+  session: {
+    strategy: "jwt",
+  },
   // next-auth credentials provider wont work with adapter and will cause authentication problems according to the doc
   adapter: FirestoreAdapter({
     credential: cert({

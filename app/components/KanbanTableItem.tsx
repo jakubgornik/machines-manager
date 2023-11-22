@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
+import { MachineData } from "@/types";
 
-const KanbanTableItem = ({ data }: { data: machineData }) => {
+const KanbanTableItem = ({ data }: { data: MachineData }) => {
   return (
     <Link href={`/machines/setstatus/${data.id}`}>
       <div className="flex cursor-pointer flex-col items-center justify-evenly gap-1 border-b border-gray-800 px-2 py-1 text-[0.8rem] transition-all duration-300 hover:bg-gray-400 hover:bg-opacity-50 dark:border-b-2 dark:hover:bg-slate-800 dark:hover:bg-opacity-50 sm:flex sm:py-2 sm:text-center lg:flex-row lg:py-4">

@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 import { differenceInMinutes, parseISO, isValid } from "date-fns";
+import { MachineData } from "@/types";
 
-const useGetMachinesWithTimeDifference = (data: machineData[]) => {
+const useGetMachinesWithTimeDifference = (data: MachineData[]) => {
   const machinesWithDifferenceArray = useMemo(() => {
     const calculateTimeDifference = () => {
       return data.map((item) => {

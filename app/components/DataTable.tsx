@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import { MachineData } from "@/types";
 
 const DataTable = ({
   data,
   header,
 }: {
-  data: machineData[];
+  data: MachineData[];
   header: string;
 }) => {
   return (

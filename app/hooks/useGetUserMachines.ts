@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
+import { MachineData } from "@/types";
 
-const useGetUserMachines = (userId: string) => {
-  const [userMachines, setUserMachines] = useState<machineData[]>([]);
+const useGetUserMachines = (userId: string | undefined) => {
+  const [userMachines, setUserMachines] = useState<MachineData[]>([]);
   // todo handle states like loading
   useEffect(() => {
     const fetchUserMachines = async () => {
       try {
         if (!userId) {
+          setUserMachines([]);
           return;
         }
         const response = await fetch(
@@ -14,11 +16,11 @@ const useGetUserMachines = (userId: string) => {
         );
         const fetchedData = await response.json();
         if (Array.isArray(fetchedData)) {
-          setUserMachines(fetchedData as machineData[]);
+          setUserMachines(fetchedData as MachineData[]);
         } else if (typeof fetchedData === "object" && fetchedData !== null) {
           const dataArray = Object.keys(fetchedData).map(
             (key) => fetchedData[key],
-          ) as machineData[];
+          ) as MachineData[];
           setUserMachines(dataArray);
         } else {
           setUserMachines([]);

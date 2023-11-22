@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { generateUniqueId } from "../utilities/generateUniqueId";
 import { useRouter } from "next/navigation";
+import { MachineData } from "@/types";
 
 const ManageMachines = ({
   id,
@@ -13,16 +14,16 @@ const ManageMachines = ({
 }: {
   id?: string;
   userId: string;
-  onAdd?: (data: machineData) => Promise<void>;
+  onAdd?: (data: MachineData) => Promise<void>;
   onDelete?: (userId: string, machineDataId: string) => Promise<void>;
   onUpdate?: (
     userId: string,
     machineDataId: string,
-    newData: Partial<machineData>,
+    newData: Partial<MachineData>,
   ) => Promise<void>;
 }) => {
   const router = useRouter();
-  const [inputsData, setInputsData] = useState<machineData>({
+  const [inputsData, setInputsData] = useState<MachineData>({
     id: "",
     machineName: "",
     machineDesc: "",

@@ -1,24 +1,25 @@
 "use client";
 
 import React from "react";
-import { useGetUserId } from "@/app/hooks/useGetUserId";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Navigation from "@/app/components/Navigation";
 import Dashboard from "@/app/components/Dashboard";
 import ManageMachinesStatus from "@/app/components/ManageMachinesStatus";
 import { useCallback } from "react";
+import { MachineData } from "@/types";
 
 const SetMachineStatusPanel = ({ params }: { params: { id: string } }) => {
   const { data: session } = useSession();
-  const userId = useGetUserId();
   const router = useRouter();
+
+  const userId = session?.user?.id ? session.user.id : "";
 
   const updateMachineStatus = useCallback(
     async (
       userId: string,
       machineToUpdateId: string,
-      newData: Partial<machineData>,
+      newData: Partial<MachineData>,
     ): Promise<void> => {
       try {
         const res = await fetch(
@@ -59,7 +60,7 @@ const SetMachineStatusPanel = ({ params }: { params: { id: string } }) => {
 
   if (session)
     return (
-      <div className="flex h-screen flex-col sm:flex-row">
+      <div className="flex h-[100dvh] flex-col sm:flex-row">
         <Navigation />
         <Dashboard title="manage status">
           <ManageMachinesStatus

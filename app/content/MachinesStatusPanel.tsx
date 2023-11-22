@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useGetUserId } from "../hooks/useGetUserId";
 import { useGetUserMachines } from "../hooks/useGetUserMachines";
 import { useSession } from "next-auth/react";
 import MachineItemWithStatus from "../components/MachineItemWithStatus";
@@ -12,7 +11,7 @@ const MachinesStatusPanel = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const { data: session } = useSession();
 
-  const userId = useGetUserId();
+  const userId = session?.user?.id;
   const userMachines = useGetUserMachines(userId).filter(
     (machine) => machine !== null,
   );

@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { MachineData } from "@/types";
 
-const MachineItemWithStatus = ({ machine }: { machine: machineData }) => {
+const MachineItemWithStatus = ({ machine }: { machine: MachineData }) => {
   const router = useRouter();
 
   return (

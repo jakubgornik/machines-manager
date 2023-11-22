@@ -3,7 +3,6 @@
 import React from "react";
 import { FaPlus } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import { useGetUserId } from "../hooks/useGetUserId";
 import { useGetUserMachines } from "../hooks/useGetUserMachines";
 import { useSession } from "next-auth/react";
 import MachineItem from "../components/MachineItem";
@@ -13,13 +12,12 @@ import { useState, useCallback } from "react";
 const MachinesPanel = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const { data: session } = useSession();
-
   const router = useRouter();
 
-  const userId = useGetUserId();
-  const userMachines = useGetUserMachines(userId).filter((machine) => {
-    return machine !== null;
-  });
+  const userId = session?.user?.id;
+  const userMachines = useGetUserMachines(userId).filter(
+    (machine) => machine !== null,
+  );
 
   const handleAddNewMachine = useCallback(() => {
     router.push("/machines/addmachine");

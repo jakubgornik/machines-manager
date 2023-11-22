@@ -1,7 +1,7 @@
 "use client";
 import CalcualtionSummary from "../components/CalcualtionSummary";
 import { useState } from "react";
-import { useGetUserId } from "../hooks/useGetUserId";
+import { useSession } from "next-auth/react";
 import { useGetUserMachines } from "../hooks/useGetUserMachines";
 import { useGetMachinesWithTimeDifference } from "../hooks/useGetMachinesWithTimeDifference";
 import {
@@ -18,6 +18,7 @@ import {
   Cell,
 } from "recharts";
 import { FaPrint } from "react-icons/fa";
+import { MachineData } from "@/types";
 
 const COLORS = ["#4ade80", "#f87171"];
 const RADIAN = Math.PI / 180;
@@ -45,20 +46,23 @@ const renderCustomizedLabel = ({
     </text>
   );
 };
-interface ExtendedMachineData extends machineData {
+interface ExtendedMachineData extends MachineData {
   timeDifference: number;
 }
 
-interface ResultItem {
+type ResultItem = {
   name: string;
   calculated: number;
-}
+};
 
 const StatisticsPanel = () => {
-  const userId = useGetUserId();
+  const { data: session } = useSession();
+
+  const userId = session?.user?.id;
   const userMachines = useGetUserMachines(userId).filter(
     (machine) => machine !== null,
   );
+
   const userMachinesWithTimeDifference =
     useGetMachinesWithTimeDifference(userMachines);
 
@@ -229,183 +233,184 @@ const StatisticsPanel = () => {
   const eachMonthOfQuarterData =
     calculateExpensesIncomeForEachMonthOfQuarter(eachMonthOfQuarter);
 
-  return (
-    <div className="flex h-full w-full flex-col gap-6">
-      <div className="flex h-full w-full justify-around gap-4">
-        <div className="relative my-4 w-1/2 text-sm font-semibold text-gray-900 focus-within:text-gray-900 dark:text-lightBlue dark:focus-within:text-lightBlue print:hidden sm:text-base">
-          <select
-            onChange={updateInputsState}
-            name="year"
-            id="year"
-            className="focus:shadow-outline w-full appearance-none border-b-2 border-gray-900 bg-white/70 px-2 py-3 font-normal leading-normal text-gray-900 focus:outline-none dark:border-lightBlue dark:bg-gray-900 dark:text-white"
-          >
-            {years.map((year) => (
-              <option key={year} value={year}>
-                {year}
-              </option>
-            ))}
-          </select>
-          <label
-            htmlFor="year"
-            className="pointer-events-none absolute -left-4 -top-5 px-4 sm:-left-4 sm:-top-6"
-          >
-            Year
-          </label>
-        </div>
-        <div className="relative my-4 w-1/2 text-sm font-semibold text-gray-900 focus-within:text-gray-900 dark:text-lightBlue dark:focus-within:text-lightBlue print:hidden sm:text-base">
-          <select
-            onChange={updateInputsState}
-            name="q"
-            id="q"
-            className="focus:shadow-outline w-full appearance-none border-b-2 border-gray-900 bg-white/70 px-2 py-3 font-normal leading-normal text-gray-900 focus:outline-none dark:border-lightBlue dark:bg-gray-900 dark:text-white"
-          >
-            <option key={"q1"} value="Q1">
-              Q1
-            </option>
-            <option key={"q2"} value="Q2">
-              Q2
-            </option>
-            <option key={"q3"} value="Q3">
-              Q3
-            </option>
-            <option key={"q4"} value="Q4">
-              Q4
-            </option>
-          </select>
-          <label
-            htmlFor="q"
-            className="pointer-events-none absolute -left-4 -top-5 px-4  sm:-left-4 sm:-top-6"
-          >
-            Quarter
-          </label>
-        </div>
-      </div>
-
-      <CalcualtionSummary
-        header={"Annual statement"}
-        income={dataInGivenYear[0]}
-        expenses={dataInGivenYear[1]}
-      />
-
-      <div className="flex w-full flex-col items-center justify-around gap-4 overflow-hidden sm:flex-row">
-        <BarChart
-          width={300}
-          height={300}
-          data={[combinedDataInGivenYear]}
-          margin={{
-            top: 5,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Bar dataKey="income" fill="#4ade80" />
-          <Bar dataKey="expenses" fill="#f87171" />
-        </BarChart>
-
-        <PieChart width={300} height={300}>
-          <Pie
-            data={dataInGivenYear}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={80}
-            fill="#73abd1"
-            dataKey="calculated"
-          >
-            {dataInGivenYear.map((en, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-        </PieChart>
-      </div>
-
-      <CalcualtionSummary
-        header={`Quarter statement ${selectInputsData.q}`}
-        income={dataInGivenQuarter[0]}
-        expenses={dataInGivenQuarter[1]}
-      />
-
-      <div className="flex w-full flex-col items-center justify-around gap-4 overflow-hidden sm:flex-row">
-        <BarChart
-          width={300}
-          height={300}
-          data={[combinedDataInGivenQuarter]}
-          margin={{
-            top: 5,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Bar dataKey="income" fill="#4ade80" />
-          <Bar dataKey="expenses" fill="#f87171" />
-        </BarChart>
-
-        <PieChart width={300} height={300}>
-          <Pie
-            data={dataInGivenQuarter}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={80}
-            fill="#73abd1"
-            dataKey="calculated"
-          >
-            {dataInGivenYear.map((en, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-        </PieChart>
-      </div>
-      <div className="hidden w-full justify-center overflow-hidden mobile:flex">
-        <div className="h-[300px] w-[300px] sm:w-[500px] ">
-          <ResponsiveContainer className="h-full w-full ">
-            <BarChart
-              data={eachMonthOfQuarterData}
-              margin={{
-                top: 20,
-                bottom: 5,
-              }}
+  if (session)
+    return (
+      <div className="flex h-full w-full flex-col gap-6">
+        <div className="flex h-full w-full justify-around gap-4">
+          <div className="relative my-4 w-1/2 text-sm font-semibold text-gray-900 focus-within:text-gray-900 dark:text-lightBlue dark:focus-within:text-lightBlue print:hidden sm:text-base">
+            <select
+              onChange={updateInputsState}
+              name="year"
+              id="year"
+              className="focus:shadow-outline w-full appearance-none border-b-2 border-gray-900 bg-white/70 px-2 py-3 font-normal leading-normal text-gray-900 focus:outline-none dark:border-lightBlue dark:bg-gray-900 dark:text-white"
             >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="income" stackId="a" fill="#4ade80" />
-              <Bar dataKey="expenses" stackId="a" fill="#f87171" />
-            </BarChart>
-          </ResponsiveContainer>
+              {years.map((year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
+            </select>
+            <label
+              htmlFor="year"
+              className="pointer-events-none absolute -left-4 -top-5 px-4 sm:-left-4 sm:-top-6"
+            >
+              Year
+            </label>
+          </div>
+          <div className="relative my-4 w-1/2 text-sm font-semibold text-gray-900 focus-within:text-gray-900 dark:text-lightBlue dark:focus-within:text-lightBlue print:hidden sm:text-base">
+            <select
+              onChange={updateInputsState}
+              name="q"
+              id="q"
+              className="focus:shadow-outline w-full appearance-none border-b-2 border-gray-900 bg-white/70 px-2 py-3 font-normal leading-normal text-gray-900 focus:outline-none dark:border-lightBlue dark:bg-gray-900 dark:text-white"
+            >
+              <option key={"q1"} value="Q1">
+                Q1
+              </option>
+              <option key={"q2"} value="Q2">
+                Q2
+              </option>
+              <option key={"q3"} value="Q3">
+                Q3
+              </option>
+              <option key={"q4"} value="Q4">
+                Q4
+              </option>
+            </select>
+            <label
+              htmlFor="q"
+              className="pointer-events-none absolute -left-4 -top-5 px-4  sm:-left-4 sm:-top-6"
+            >
+              Quarter
+            </label>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-center pt-8 print:hidden">
-        <div
-          onClick={() => window.print()}
-          className="group flex cursor-pointer items-center gap-4 rounded-sm border border-gray-900 px-6 py-2 duration-300 hover:bg-gray-900/50 dark:border-lightBlue dark:hover:bg-lightBlue"
-        >
-          <span className="text-lg font-medium text-gray-900 duration-300 group-hover:text-white dark:text-white">
-            Print results
-          </span>
-          <div>
-            <FaPrint className="h-[20px] w-[20px] fill-gray-900 duration-300 group-hover:fill-white dark:fill-white" />
+
+        <CalcualtionSummary
+          header={"Annual statement"}
+          income={dataInGivenYear[0]}
+          expenses={dataInGivenYear[1]}
+        />
+
+        <div className="flex w-full flex-col items-center justify-around gap-4 overflow-hidden sm:flex-row">
+          <BarChart
+            width={300}
+            height={300}
+            data={[combinedDataInGivenYear]}
+            margin={{
+              top: 5,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="income" fill="#4ade80" />
+            <Bar dataKey="expenses" fill="#f87171" />
+          </BarChart>
+
+          <PieChart width={300} height={300}>
+            <Pie
+              data={dataInGivenYear}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={renderCustomizedLabel}
+              outerRadius={80}
+              fill="#73abd1"
+              dataKey="calculated"
+            >
+              {dataInGivenYear.map((en, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+          </PieChart>
+        </div>
+
+        <CalcualtionSummary
+          header={`Quarter statement ${selectInputsData.q}`}
+          income={dataInGivenQuarter[0]}
+          expenses={dataInGivenQuarter[1]}
+        />
+
+        <div className="flex w-full flex-col items-center justify-around gap-4 overflow-hidden sm:flex-row">
+          <BarChart
+            width={300}
+            height={300}
+            data={[combinedDataInGivenQuarter]}
+            margin={{
+              top: 5,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="income" fill="#4ade80" />
+            <Bar dataKey="expenses" fill="#f87171" />
+          </BarChart>
+
+          <PieChart width={300} height={300}>
+            <Pie
+              data={dataInGivenQuarter}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={renderCustomizedLabel}
+              outerRadius={80}
+              fill="#73abd1"
+              dataKey="calculated"
+            >
+              {dataInGivenYear.map((en, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+          </PieChart>
+        </div>
+        <div className="hidden w-full justify-center overflow-hidden mobile:flex">
+          <div className="h-[300px] w-[300px] sm:w-[500px] ">
+            <ResponsiveContainer className="h-full w-full ">
+              <BarChart
+                data={eachMonthOfQuarterData}
+                margin={{
+                  top: 20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="income" stackId="a" fill="#4ade80" />
+                <Bar dataKey="expenses" stackId="a" fill="#f87171" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+        <div className="flex justify-center pt-8 print:hidden">
+          <div
+            onClick={() => window.print()}
+            className="group flex cursor-pointer items-center gap-4 rounded-sm border border-gray-900 px-6 py-2 duration-300 hover:bg-gray-900/50 dark:border-lightBlue dark:hover:bg-lightBlue"
+          >
+            <span className="text-lg font-medium text-gray-900 duration-300 group-hover:text-white dark:text-white">
+              Print results
+            </span>
+            <div>
+              <FaPrint className="h-[20px] w-[20px] fill-gray-900 duration-300 group-hover:fill-white dark:fill-white" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default StatisticsPanel;

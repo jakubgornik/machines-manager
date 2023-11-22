@@ -32,7 +32,7 @@ const SignIn = () => {
   if (!session)
     return (
       <Container>
-        <main className="flex h-screen items-center justify-center">
+        <main className="flex h-[100dvh] items-center justify-center">
           <div className="flex w-full max-w-[300px] shadow-lg sm:max-w-[800px]">
             <div className="relative hidden w-[40%] overflow-hidden rounded-l-lg sm:flex">
               <Image

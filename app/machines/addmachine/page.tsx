@@ -1,21 +1,22 @@
 "use client";
 
 import React from "react";
-import { useGetUserId } from "../../hooks/useGetUserId";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Navigation from "@/app/components/Navigation";
 import Dashboard from "@/app/components/Dashboard";
 import ManageMachines from "@/app/components/ManageMachines";
 import { useCallback } from "react";
+import { MachineData } from "@/types";
 
 const AddNewMachinePanel = () => {
   const { data: session } = useSession();
-  const userId = useGetUserId();
   const router = useRouter();
 
+  const userId = session?.user?.id ? session.user.id : "";
+
   const addMachine = useCallback(
-    async (data: machineData) => {
+    async (data: MachineData) => {
       try {
         const res = await fetch(
           `https://machinesv2-default-rtdb.europe-west1.firebasedatabase.app/${userId}/machines.json`,
@@ -44,7 +45,7 @@ const AddNewMachinePanel = () => {
 
   if (session)
     return (
-      <div className="flex h-screen  flex-col sm:flex-row">
+      <div className="flex h-[100dvh] flex-col sm:flex-row">
         <Navigation />
         <Dashboard title="add machine">
           <ManageMachines onAdd={addMachine} userId={userId} />

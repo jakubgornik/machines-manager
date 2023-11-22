@@ -1,5 +1,5 @@
 "use client";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Container from "./components/Container";
 import Link from "next/link";
 import Navigation from "./components/Navigation";
@@ -9,9 +9,11 @@ import MachinesPanel from "./content/MachinesPanel";
 const Home = () => {
   const { data: session } = useSession();
 
+  console.log(session?.user?.id);
+
   if (session)
     return (
-      <div className="flex h-screen w-full flex-col sm:flex-row">
+      <div className="flex h-[100dvh] w-full flex-col sm:flex-row">
         <Navigation />
         <Dashboard title="manage machines">
           <MachinesPanel />
@@ -22,7 +24,7 @@ const Home = () => {
 
   return (
     <Container>
-      <main className="flex h-screen items-center justify-center">
+      <main className="flex h-[100dvh] items-center justify-center">
         <div className="flex w-full max-w-[300px] flex-col items-center gap-4 rounded-md bg-gray-800 py-12 shadow-lg sm:max-w-[800px] sm:py-16">
           <h2 className="px-3 pb-2 text-center text-2xl tracking-wide text-white sm:pb-4 sm:pt-12">
             The Next{" "}
