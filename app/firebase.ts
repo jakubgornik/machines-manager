@@ -3,17 +3,14 @@ import { getApp, getApps, initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration apikey for email/passwrod credentials
+// web app's Firebase configuration apikey for email/passwrod credentials
 const firebaseConfig = {
-  apiKey: "AIzaSyCk2D1SnZd9z7etXKCR6_0xNCyHBX_gMA8",
-  authDomain: "machinesv2.firebaseapp.com",
-  projectId: "machinesv2",
-  storageBucket: "machinesv2.appspot.com",
-  messagingSenderId: "1050857033957",
-  appId: "1:1050857033957:web:1f627034309425d7a1c40c",
+  apiKey: process.env.FIREBASE_APIKEY,
+  authDomain: process.env.FIREBASE_AUTHDOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGINGSENDERID,
+  appId: process.env.FIREBASE_APPID,
 };
 
 // Initialize Firebase
