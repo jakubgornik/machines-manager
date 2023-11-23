@@ -4,10 +4,12 @@ const GoogleAnalytics = () => {
   return (
     <>
       <Script
+        id="google-analytics"
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ID}`}
       />
       <Script
+        id="google-analytics-html"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
