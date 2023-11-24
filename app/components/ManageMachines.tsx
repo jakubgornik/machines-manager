@@ -27,7 +27,7 @@ const ManageMachines = ({
     id: "",
     machineName: "",
     machineDesc: "",
-    status: "Wolne",
+    status: "Available",
     startDate: "",
     endDate: "",
     owner: "",

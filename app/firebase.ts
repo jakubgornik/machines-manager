@@ -1,9 +1,9 @@
-// Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// web app's Firebase configuration apikey for email/passwrod credentials
+// Web app's Firebase configuration apikey for email/passwrod credentials
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_APIKEY,
   authDomain: process.env.FIREBASE_AUTHDOMAIN,

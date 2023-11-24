@@ -19,11 +19,11 @@ const MachineItemWithStatus = ({ machine }: { machine: MachineData }) => {
         Status:{" "}
         <span
           className={`font-semibold ${
-            machine.status === "Wolne"
-              ? "text-green-600"
-              : machine.status === "Serwisowane"
-              ? "text-orange-400"
-              : "text-purple-400"
+            machine.status === "Available"
+              ? "text-defaultGreen"
+              : machine.status === "Serviced"
+              ? "text-defaultOrange"
+              : "text-defaultPurple"
           }`}
         >
           {machine.status}

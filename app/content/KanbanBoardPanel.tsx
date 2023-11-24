@@ -21,15 +21,15 @@ const KanbanBoardPanel = () => {
   );
 
   const userMachinesWithAvailableStatus = userMachines.filter(
-    (machine) => machine.status === "Wolne",
+    (machine) => machine.status === "Available",
   );
 
   const userMachinesWithServicedStatus = userMachines.filter(
-    (machine) => machine.status === "Serwisowane",
+    (machine) => machine.status === "Serviced",
   );
 
   const userMachinesWithRentedStatus = userMachines.filter(
-    (machine) => machine.status === "Wynajmowane",
+    (machine) => machine.status === "Rented",
   );
 
   if (session)

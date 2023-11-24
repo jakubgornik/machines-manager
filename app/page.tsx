@@ -9,8 +9,6 @@ import MachinesPanel from "./content/MachinesPanel";
 const Home = () => {
   const { data: session } = useSession();
 
-  console.log(session?.user?.id);
-
   if (session)
     return (
       <div className="flex h-[100dvh] w-full flex-col sm:flex-row">

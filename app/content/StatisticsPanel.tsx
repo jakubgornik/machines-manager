@@ -120,8 +120,7 @@ const StatisticsPanel = () => {
   const calculateIncomeExpenses = (data: ExtendedMachineData[]) => {
     const calculatedIncome = data
       .filter(
-        (item) =>
-          item.status === "Wynajmowane" && item.pricePerHour !== undefined,
+        (item) => item.status === "Rented" && item.pricePerHour !== undefined,
       )
       .reduce((acc, item) => {
         if (item.pricePerHour) {
@@ -132,8 +131,7 @@ const StatisticsPanel = () => {
 
     const calculatedExpenses = data
       .filter(
-        (item) =>
-          item.status === "Serwisowane" && item.pricePerHour !== undefined,
+        (item) => item.status === "Serviced" && item.pricePerHour !== undefined,
       )
       .reduce((acc, item) => {
         if (item.pricePerHour) {
@@ -210,10 +208,10 @@ const StatisticsPanel = () => {
       let income = 0;
 
       month.forEach((item) => {
-        if (item.status === "Wynajmowane" && item.pricePerHour !== undefined) {
+        if (item.status === "Rented" && item.pricePerHour !== undefined) {
           income += item.pricePerHour * item.timeDifference;
         } else if (
-          item.status === "Serwisowane" &&
+          item.status === "Serviced" &&
           item.pricePerHour !== undefined
         ) {
           expenses += item.pricePerHour * item.timeDifference;

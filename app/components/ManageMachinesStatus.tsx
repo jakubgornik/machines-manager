@@ -19,7 +19,7 @@ const ManageMachinesStatus = ({
 }) => {
   const router = useRouter();
   const [inputsData, setInputsData] = useState<Partial<MachineData>>({
-    status: "Wolny",
+    status: "Available",
     startDate: "",
     endDate: "",
     owner: "",
@@ -114,9 +114,9 @@ const ManageMachinesStatus = ({
           onChange={handleSelectInputChange}
           className="focus:shadow-outline w-full appearance-none border-b-2 border-gray-900 bg-white/70 px-2 py-3 font-normal leading-normal text-gray-800 focus:outline-none dark:border-lightBlue"
         >
-          <option value="Wolne">Wolne</option>
-          <option value="Wynajmowane">Wynajmowane</option>
-          <option value="Serwisowane">Serwisowane</option>
+          <option value="Available">Available</option>
+          <option value="Rented">Rented</option>
+          <option value="Serviced">Serviced</option>
         </select>
         <label
           htmlFor="status"

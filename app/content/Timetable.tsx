@@ -37,11 +37,11 @@ const Timetable = () => {
         }
 
         const color =
-          status === "Wynajmowane"
-            ? "#c084fc"
-            : status === "Serwisowane"
-            ? "#fb923c"
-            : "#73abd1";
+          status === "Rented"
+            ? "#8654C5"
+            : status === "Serviced"
+            ? "#F2B412"
+            : "#05C801";
         const title = `${machineName}, ${machineDesc}, client: ${owner}`;
         const startWithConvertedType = parseISO(startDate);
         const endWithConvertedType = parseISO(endDate);

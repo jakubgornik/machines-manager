@@ -63,11 +63,11 @@ const DataTable = ({
                 <span className="break-all text-gray-800 dark:text-white">
                   <span
                     className={`font-semibold  ${
-                      el.status === "Wolne"
-                        ? "text-green-600"
-                        : el.status === "Serwisowane"
-                        ? "text-orange-400"
-                        : "text-purple-400"
+                      el.status === "Available"
+                        ? "text-defaultGreen"
+                        : el.status === "Serviced"
+                        ? "text-defaultOrange"
+                        : "text-defaultPurple"
                     }`}
                   >
                     {el.status}

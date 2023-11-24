@@ -14,11 +14,11 @@ const KanbanTableItem = ({ data }: { data: MachineData }) => {
         </span>
         <span
           className={`font-semibold xl:min-w-[33%] ${
-            data.status === "Wolne"
-              ? "text-green-600"
-              : data.status === "Serwisowane"
-              ? "text-orange-400"
-              : "text-purple-400"
+            data.status === "Available"
+              ? "text-defaultGreen"
+              : data.status === "Serviced"
+              ? "text-defaultOrange"
+              : "text-defaultPurple"
           }`}
         >
           {data.status}
