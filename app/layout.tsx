@@ -2,7 +2,6 @@ import "../app/styles/globals.css";
 import type { Metadata } from "next";
 import SessionProvider from "./SessionProvider";
 import { Barlow } from "next/font/google";
-import GoogleAnalytics from "./components/GoogleAnalytics";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -22,7 +21,6 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={barlow.className}>
-        <GoogleAnalytics />
         <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
