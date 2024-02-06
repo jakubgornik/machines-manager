@@ -32,7 +32,7 @@ const Home = () => {
             Manager
           </h2>
           <span className="mx:px-3 px-6 text-center text-lg font-semibold leading-9 tracking-tight text-white sm:text-2xl">
-            Acces is denied, you first need to be authenticated
+            Acces denied, first you need to be authenticated
           </span>
           <Link
             href="/signin"
