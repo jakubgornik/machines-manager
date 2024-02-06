@@ -49,9 +49,6 @@ const Navigation = () => {
         <Link href="/timetable">
           <FaRegCalendarAlt className="h-[25px] w-[25px] fill-gray-900 duration-500 hover:fill-white dark:fill-lighterBlue dark:hover:fill-lightBlue" />
         </Link>
-        <Link href="/localizations">
-          <FaMapMarkedAlt className="h-[25px] w-[25px] fill-gray-900 duration-500 hover:fill-white dark:fill-lighterBlue dark:hover:fill-lightBlue" />
-        </Link>
         <div onClick={toggleDarkModeFunc}>
           {isWhiteModeActive ? (
             <FaMoon className="h-[25px] w-[25px] cursor-pointer fill-gray-900 duration-500 hover:fill-white dark:fill-lighterBlue dark:hover:fill-lightBlue" />
@@ -117,11 +114,6 @@ const Navigation = () => {
             <li className="flex w-full justify-center py-2 duration-300 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-lightBlue dark:hover:text-gray-800">
               <Link className="font-medium" href="/timetable">
                 Timetable
-              </Link>
-            </li>
-            <li className="flex w-full justify-center py-2 duration-300 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-lightBlue dark:hover:text-gray-800">
-              <Link className="font-medium" href="/localizations">
-                Localiztions
               </Link>
             </li>
             <li className="flex w-full justify-center py-2 duration-300 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-lightBlue dark:hover:text-gray-800">

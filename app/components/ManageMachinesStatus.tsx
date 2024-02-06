@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { differenceInMinutes, parseISO, isValid } from "date-fns";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { MachineData } from "@/types";
@@ -24,8 +25,13 @@ const ManageMachinesStatus = ({
     endDate: "",
     owner: "",
     ownerMail: "",
-    pricePerHour: 0,
+    pricePerHour: 10,
     ownerLocalization: "",
+  });
+
+  const [validationStates, setValidationStates] = useState({
+    isDateDifferenceValid: true,
+    // ...
   });
 
   const handleUpdate = () => {
@@ -48,6 +54,19 @@ const ManageMachinesStatus = ({
       ...inputsData,
       [event.target.name]: event.target.value,
     });
+  };
+
+  const handleDateValidation = () => {
+    const { startDate, endDate } = inputsData;
+
+    if (startDate && endDate) {
+      const isDateDifferneceValid =
+        differenceInMinutes(parseISO(endDate), parseISO(startDate)) > 0;
+      setValidationStates((prevState) => ({
+        ...prevState,
+        isDateDifferenceValid: isDateDifferneceValid,
+      }));
+    }
   };
 
   return (
@@ -129,6 +148,7 @@ const ManageMachinesStatus = ({
         <input
           name="pricePerHour"
           type="number"
+          min="10"
           id="pricePerHour"
           placeholder=" "
           value={inputsData.pricePerHour}
@@ -149,6 +169,7 @@ const ManageMachinesStatus = ({
           type="datetime-local"
           id="startDate"
           placeholder=" "
+          onBlur={handleDateValidation}
           onChange={handleInputChange}
           required
           className="focus:shadow-outline w-full appearance-none border-b-2 border-gray-900 bg-white/70 px-2 py-3 font-normal leading-normal text-gray-800 focus:outline-none dark:border-lightBlue"
@@ -167,6 +188,7 @@ const ManageMachinesStatus = ({
           id="endDate"
           placeholder=" "
           onChange={handleInputChange}
+          onBlur={handleDateValidation}
           required
           className="focus:shadow-outline w-full appearance-none border-b-2 border-gray-900 bg-white/70 px-2 py-3 font-normal leading-normal text-gray-800 focus:outline-none dark:border-lightBlue"
         />
@@ -176,7 +198,9 @@ const ManageMachinesStatus = ({
         >
           End date
         </label>
+        {validationStates.isDateDifferenceValid ? "" : "Incorrect dates"}
       </div>
+
       <div className="flex w-[90%] flex-col justify-center gap-4 sm:w-[60%] sm:flex-row sm:justify-end">
         <button
           onClick={() => router.back()}
@@ -193,7 +217,8 @@ const ManageMachinesStatus = ({
             inputsData.status?.length === 0 ||
             inputsData.pricePerHour === 0 ||
             !inputsData.startDate ||
-            !inputsData.endDate
+            !inputsData.endDate ||
+            !validationStates.isDateDifferenceValid
           }
           onClick={handleUpdate}
           type="button"
